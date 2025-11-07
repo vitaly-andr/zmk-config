@@ -1,0 +1,116 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/studio.h>
+
+#define DEF 0
+#define LWR 1
+#define RSE 2
+#define ADJ 3
+
+&lt {
+    flavor = "balanced";
+    tapping-term-ms = <220>;
+    quick-tap-ms = <175>;
+};
+
+&mt {
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <175>;
+};
+
+/ {
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <LWR RSE>;
+            then-layer = <ADJ>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        combo_delete {
+            bindings = <&kp DEL>;
+            key-positions = <37 38>;
+            layers = <0>;
+        };
+
+        combo_backspace {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <36 37>;
+            layers = <0>;
+        };
+
+        combo_copy {
+            bindings = <&kp LC(C)>;
+            key-positions = <2 3 4>;
+            layers = <0>;
+        };
+
+        combo_paste {
+            bindings = <&kp LC(V)>;
+            key-positions = <2 4>;
+            layers = <0>;
+        };
+
+        combo_cut {
+            bindings = <&kp LC(X)>;
+            key-positions = <2 3>;
+            layers = <0>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        base_layer {
+            label = "DEF";
+            bindings = <
+&mt LEFT_GUI RIGHT_BRACKET  &kp Q  &kp W  &kp E  &kp R        &kp T                                      &kp Y          &kp U        &kp I      &kp O    &kp P     &mt RIGHT_GUI LEFT_BRACKET
+&kp LCTRL                   &kp A  &kp S  &kp D  &kp F        &kp G                                      &kp H          &kp J        &kp K      &kp L    &kp SEMI  &mt RCTRL SQT
+&kp LALT                    &kp Z  &kp X  &kp C  &kp V        &kp B                                      &kp N          &kp M        &kp COMMA  &kp DOT  &kp FSLH  &mt RALT BSLH
+                                                 &lt RSE TAB  &mt LSHFT SPACE  &lt LWR RET  &lt LWR ESC  &kp BACKSPACE  &lt RSE DEL
+            >;
+        };
+
+        lower_layer {
+            label = "LWR";
+            bindings = <
+&kp UNDER       &kp F1    &kp F2  &kp F3    &kp F4       &kp F5                     &kp F6     &kp F7       &kp F8    &kp F9    &kp F10   &kp F11
+&mt LCTRL PLUS  &kp EXCL  &kp AT  &kp HASH  &kp DLLR     &kp PRCNT                  &kp CARET  &kp AMPS     &kp STAR  &kp LPAR  &kp RPAR  &mt RCTRL MINUS
+&mt LALT EQUAL  &kp N1    &kp N2  &kp N3    &kp N4       &kp N5                     &kp N6     &kp N7       &kp N8    &kp N9    &kp N0    &trans
+                                            &lt ADJ TAB  &trans     &trans  &trans  &trans     &lt ADJ DEL
+            >;
+        };
+
+        raise_layer {
+            label = "RSE";
+            bindings = <
+&kp KP_NUM       &kp SLASH     &kp N1        &kp N2        &kp N3        &kp MINUS                             &kp C_VOL_UP  &kp HOME  &kp PSCRN  &kp PG_UP  &kp SLCK         &kp CAPS
+&mt LCTRL EQUAL  &kp ASTERISK  &kp N4        &kp N5        &kp N6        &kp PLUS                              &kp C_MUTE    &kp LEFT  &kp UP     &kp RIGHT  &kp INS          &mt RCTRL K_APP
+&trans           &kp N0        &kp N7        &kp N8        &kp N9        &kp DOT                               &kp C_VOL_DN  &kp END   &kp DOWN   &kp PG_DN  &kp PAUSE_BREAK  &trans
+                                                           &lt ADJ TAB   &trans        &trans  &trans          &trans        &lt ADJ DEL
+            >;
+        };
+
+        adjust_layer {
+            label = "ADJ";
+            bindings = <
+&bootloader   &sys_reset    &studio_unlock  &none         &none         &none                         &none         &none         &none         &none         &studio_unlock  &bootloader
+&bt BT_CLR    &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                  &bt BT_SEL 4  &bt BT_SEL 3  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0    &bt BT_CLR
+&out OUT_TOG  &none         &none           &none         &none         &none                         &none         &none         &none         &none         &none           &out OUT_TOG
+                                                          &trans        &none         &trans  &trans  &none         &trans
+            >;
+        };
+    };
+};
