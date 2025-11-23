@@ -18,7 +18,80 @@
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
-          }; 
+          };
+        };
+
+        macros {
+          ws1: workspace_1 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI>
+                     , <&macro_tap &kp N1>
+                     , <&macro_release &kp LGUI>;
+          };
+          ws2: workspace_2 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI>
+                     , <&macro_tap &kp N2>
+                     , <&macro_release &kp LGUI>;
+          };
+          ws3: workspace_3 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI>
+                     , <&macro_tap &kp N3>
+                     , <&macro_release &kp LGUI>;
+          };
+          ws4: workspace_4 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI>
+                     , <&macro_tap &kp N4>
+                     , <&macro_release &kp LGUI>;
+          };
+          ws5: workspace_5 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI>
+                     , <&macro_tap &kp N5>
+                     , <&macro_release &kp LGUI>;
+          };
+          ws6: workspace_6 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI>
+                     , <&macro_tap &kp N6>
+                     , <&macro_release &kp LGUI>;
+          };
+          ws7: workspace_7 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI>
+                     , <&macro_tap &kp N7>
+                     , <&macro_release &kp LGUI>;
+          };
+          ws8: workspace_8 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI>
+                     , <&macro_tap &kp N8>
+                     , <&macro_release &kp LGUI>;
+          };
+          ws9: workspace_9 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI>
+                     , <&macro_tap &kp N9>
+                     , <&macro_release &kp LGUI>;
+          };
+          ws0: workspace_0 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI>
+                     , <&macro_tap &kp N0>
+                     , <&macro_release &kp LGUI>;
+          };
         };
 
         keymap {
@@ -31,8 +104,8 @@
 // | SHFT |  Z  |  X  |  C  |  V  |    B    |   |  N  |  M   |  ,  |  .  |  /  | SHFT |
 //                    | GUI | LWR | ALT/ENT |   | HYPER/SPC | BKSP  | RSE |
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp ESC
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &lt 1 SQT
+   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U    &kp I     &kp O   &kp P    &kp ESC
+   &kp LCTRL &kp A &kp S &kp D &lt 3 F &kp G   &kp H &lt 3 J &kp K     &kp L   &kp SEMI &lt 1 SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp RSHFT 
                &kp LGUI &mo 1 &tp LALT RET   &tp LC(LS(LA(LGUI))) SPACE &kp BSPC &mo 2
                         >;
@@ -63,6 +136,20 @@
    &trans     &kp C_PREV    &kp C_NEXT   &kp C_VOL_DN &kp C_VOL_UP &kp C_PP        &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
    &bt BT_CLR &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4    &trans   &trans   &trans &trans    &trans &trans
                           	                        &trans   &trans   &trans       &trans   &trans   &trans
+                        >;
+                };
+
+                workspace_layer {
+// -----------------------------------------------------------------------------------------
+// | TAB |  WS1 |  WS2 |  WS3 |  WS4 |  WS5 |   |  WS6 |  WS7 |  WS8 |  WS9 |  WS0 | ESC |
+// |     |      |      |      |  F   |      |   |      |  J   |      |      |      |     |
+// |     |      |      |      |      |      |   |      |      |      |      |      |     |
+//                     | GUI  | LWR  | ALT  |   | SHFT | SPC  | RSE  |
+                        bindings = <
+   &trans &ws1   &ws2   &ws3   &ws4   &ws5      &ws6   &ws7   &ws8   &ws9   &ws0   &trans
+   &trans &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans &trans
+   &trans &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans &trans
+                        &trans &trans &trans    &trans &trans &trans
                         >;
                 };
         };
