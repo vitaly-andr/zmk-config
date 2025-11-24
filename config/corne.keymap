@@ -161,14 +161,14 @@
                 workspace_layer {
 // -----------------------------------------------------------------------------------------
 // | TAB |  WS1 |  WS2 |  WS3 |  WS4 |  WS5 |   |  WS6 |  WS7 |  WS8 |  WS9 |  WS0 | ESC |
-// |     |      |      |      |  F   |      |   |      |  J   |  UP  |      |      |     |
-// |     |      |      |      |      |      |   |      | LEFT | DOWN | RGHT |      |     |
-//                     | GUI  | LWR  | ALT  |   | SHFT | SPC  | RSE  |
+// |     |      |      |      |  F   |      |   | PgUp | Home |  UP  | End  |      |     |
+// |     |      |      |      |      |      |   | PgDn | LEFT | DOWN | RGHT |      |     |
+//                     | GUI  | LWR  | ALT  |   | INS  | DEL  | RSE  |
                         bindings = <
    &trans &ws1   &ws2   &ws3   &ws4   &ws5      &ws6     &ws7     &ws8     &ws9    &ws0   &trans
-   &trans &trans &trans &trans &trans &trans    &trans   &trans   &kp UP   &trans  &trans &trans
-   &trans &trans &trans &trans &trans &trans    &trans   &kp LEFT &kp DOWN &kp RIGHT &trans &trans
-                        &trans &trans &trans    &trans   &trans   &trans
+   &trans &trans &trans &trans &trans &trans    &kp PG_UP &kp HOME &kp UP   &kp END  &trans &trans
+   &trans &trans &trans &trans &trans &trans    &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &trans &trans
+                        &trans &trans &trans    &kp INS   &kp DEL   &trans
                         >;
                 };
 
