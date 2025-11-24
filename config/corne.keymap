@@ -119,12 +119,13 @@
 // -----------------------------------------------------------------------------------------
 // | TAB  |  Q  |  W  |  E  |  R  |    T    |   |  Y  |  U   |  I  |  O  |  P  | ESC |
 // | CTRL |  A  |  S  |  D  |  F  |    G    |   |  H  |  J   |  K  |  L  |  ;  |  LWR/'   |
+// |      |     |     | /SFT|     |         |   |     |      | /SFT|     |     |          |
 // | SHFT |  Z  |  X  |  C  |  V  |    B    |   |  N  |  M   |  ,  |  .  |  /  | SHFT |
 //                    |NUMPAD| BASE | SUP+  |   | ESC  | SPC  |  L6  |
 //                    | /GUI | /L1  | SHFT  |   | /GUI |      | /SFT |
                         bindings = <
    &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U    &kp I     &kp O   &kp P    &mt LALT ESC
-   &kp LCTRL &kp A &kp S &mt LSHFT D &lt 3 F &kp G   &kp H &lt 3 J &kp K &kp L   &kp SEMI &lt 1 SQT
+   &kp LCTRL &kp A &kp S &mt LSHFT D &lt 3 F &kp G   &kp H &lt 3 J &mt RSHFT K &kp L   &kp SEMI &lt 1 SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &mo 2
                &lt_rev LGUI 4 &td_base 1 0 &mt LS(LGUI) RET   &mt LGUI ESC &kp SPACE &lt_rev RSHFT 6
                         >;
