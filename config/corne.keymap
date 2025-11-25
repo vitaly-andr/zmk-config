@@ -14,7 +14,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "TAP_PREFERRED";
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
+            tapping-term-ms = <250>;
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
@@ -24,9 +24,9 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <150>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <200>;
+            require-prior-idle-ms = <175>;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
           };
@@ -35,7 +35,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_REVERSED";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <280>;
             flavor = "balanced";
             bindings = <&kp>, <&to>;  // hold=key, tap=toggle to layer
           };
@@ -44,7 +44,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "TAP_TO_BASE";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <280>;
             flavor = "balanced";
             bindings = <&mo>, <&to>;  // hold=mo layer, tap=to layer
           };
