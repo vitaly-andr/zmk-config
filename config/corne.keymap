@@ -189,8 +189,8 @@
 // |     |     |     |     |     |     |   |  0  |  1  |  2  |  3  |  .  |     |
 //                   | SPC |     |  H  |   |     |     |     |
                         bindings = <
-   &mkp LCLK &trans &trans &kp UP &trans &trans    &kp FSLH &kp N7 &kp N8   &kp N9 &kp MINUS &trans
-   &mkp RCLK &trans &kp LEFT &kp DOWN &kp RIGHT &trans    &kp STAR &kp N4 &kp N5   &kp N6 &kp PLUS  &kp RET
+   &mkp MB1 &trans &trans &kp UP &trans &trans    &kp FSLH &kp N7 &kp N8   &kp N9 &kp MINUS &trans
+   &mkp MB2 &trans &kp LEFT &kp DOWN &kp RIGHT &trans    &kp STAR &kp N4 &kp N5   &kp N6 &kp PLUS  &kp RET
    &trans &trans &trans &trans &trans &trans    &kp N0   &kp N1 &kp N2   &kp N3 &kp DOT   &trans
                         &kp SPACE &trans &kp H    &trans   &trans &trans
                         >;
