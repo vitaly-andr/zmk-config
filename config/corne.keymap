@@ -237,21 +237,19 @@
           };
 
           // English punctuation macros for Russian layer - switch to EN, send key, switch back to RU
+          // Using same pattern as to_ru/to_en which work
           en_comma: english_comma {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <50>;
-            tap-ms = <50>;
+            wait-ms = <30>;
+            tap-ms = <30>;
             bindings
               = <&macro_press &kp LCTRL>
-              , <&macro_press &kp LSHFT>
-              , <&macro_release &kp LSHFT>
+              , <&macro_tap &kp LSHFT>
               , <&macro_release &kp LCTRL>
-              , <&macro_wait_time 50>
               , <&macro_tap &kp COMMA>
               , <&macro_press &kp LALT>
-              , <&macro_press &kp LSHFT>
-              , <&macro_release &kp LSHFT>
+              , <&macro_tap &kp LSHFT>
               , <&macro_release &kp LALT>
               ;
           };
@@ -259,18 +257,15 @@
           en_dot: english_dot {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <50>;
-            tap-ms = <50>;
+            wait-ms = <30>;
+            tap-ms = <30>;
             bindings
               = <&macro_press &kp LCTRL>
-              , <&macro_press &kp LSHFT>
-              , <&macro_release &kp LSHFT>
+              , <&macro_tap &kp LSHFT>
               , <&macro_release &kp LCTRL>
-              , <&macro_wait_time 50>
               , <&macro_tap &kp DOT>
               , <&macro_press &kp LALT>
-              , <&macro_press &kp LSHFT>
-              , <&macro_release &kp LSHFT>
+              , <&macro_tap &kp LSHFT>
               , <&macro_release &kp LALT>
               ;
           };
@@ -278,18 +273,15 @@
           en_fslh: english_fslh {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <50>;
-            tap-ms = <50>;
+            wait-ms = <30>;
+            tap-ms = <30>;
             bindings
               = <&macro_press &kp LCTRL>
-              , <&macro_press &kp LSHFT>
-              , <&macro_release &kp LSHFT>
+              , <&macro_tap &kp LSHFT>
               , <&macro_release &kp LCTRL>
-              , <&macro_wait_time 50>
               , <&macro_tap &kp FSLH>
               , <&macro_press &kp LALT>
-              , <&macro_press &kp LSHFT>
-              , <&macro_release &kp LSHFT>
+              , <&macro_tap &kp LSHFT>
               , <&macro_release &kp LALT>
               ;
           };
@@ -297,18 +289,15 @@
           en_semi: english_semi {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <50>;
-            tap-ms = <50>;
+            wait-ms = <30>;
+            tap-ms = <30>;
             bindings
               = <&macro_press &kp LCTRL>
-              , <&macro_press &kp LSHFT>
-              , <&macro_release &kp LSHFT>
+              , <&macro_tap &kp LSHFT>
               , <&macro_release &kp LCTRL>
-              , <&macro_wait_time 50>
               , <&macro_tap &kp SEMI>
               , <&macro_press &kp LALT>
-              , <&macro_press &kp LSHFT>
-              , <&macro_release &kp LSHFT>
+              , <&macro_tap &kp LSHFT>
               , <&macro_release &kp LALT>
               ;
           };
