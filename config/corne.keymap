@@ -141,7 +141,7 @@
             wait-ms = <30>;
             tap-ms = <30>;
             bindings
-              = <&to 5>
+              = <&to 1>
               , <&macro_press &kp LALT>
               , <&macro_tap &kp LSHFT>
               , <&macro_release &kp LALT>
@@ -231,91 +231,43 @@
         keymap {
                 compatible = "zmk,keymap";
 
+// Layer order (higher number = higher priority):
+// 0: default_layer (English)
+// 1: russian_layer
+// 2: russian_extra_layer
+// 3: numpad_layer
+// 4: symbols_layer
+// 5: workspace_layer (with BT and media)
+
                 default_layer {
 // -----------------------------------------------------------------------------------------
 // | TAB  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  | RU    |
 // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  | '/ALT |
 // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  | SHFT  |
-//                    |NPAD | BASE| RET |   | ESC | SPC |L2/WS|
-//                    | /WS | /L1 |/SUP |   |/SUP |     |     |
-// Top-right: &to_ru macro (switch to L5 + Alt+Shift for OS Russian)
+//                    |NPAD |L4/L0| RET |   | ESC | SPC |L5/WS|
+//                    | /WS |     |/SUP |   |/SUP |     |     |
+// Top-right: &to_ru macro (switch to L1 + Alt+Shift for OS Russian)
                         bindings = <
    &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I     &kp O   &kp P    &to_ru
    &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J &kp K     &kp L   &kp SEMI &mt LALT SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp RSHFT
-               &td_base 3 4 &td_base 1 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 3 2
-                        >;
-                };
-
-                layer_below {
-// -----------------------------------------------------------------------------------------
-// |      |  !  |  @  |  #  |  $  |    %     |   |  ^  |  &  |  *  |  (  |  )  |   \   |
-// |      |  1  |  2  |  3  |  4  |    5     |   |  -  |  =  |  `  |  [  |  ]  |  "|"  |
-// | SHFT |  6  |  7  |  8  |  9  |    0     |   |  _  |  +  |  ~  |  {  |  }  | RSHFT |
-//                     | GUI |     | ALT/ENT |   | HYPER/SPACE | BKSP |    |
-                        bindings = <
-   &trans    &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET  &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSLH
-   &trans    &kp N1   &kp N2 &kp N3   &kp N4   &kp N5      &kp MINUS  &kp EQUAL &kp GRAVE       &kp LBKT &kp RBKT &kp PIPE
-   &kp LSHFT &kp N6   &kp N7 &kp N8   &kp N9   &kp N0      &kp UNDER  &kp PLUS  &kp TILDE       &kp LBRC &kp RBRC &kp RSHFT
-                         &kp LGUI &trans  &tp LALT RET     &tp LC(LS(LA(LGUI))) SPACE &kp BSPC  &trans
-                        >;
-                };
-
-                layer_above {
-// -----------------------------------------------------------------------------------------
-// |       |  F1  |  F2  |  F3  |  F4  |  F5 |            |  F6  |  F7  |  F8  |  F9  |  F10  | STUDIO |
-// |       | Prev | Next | Vol - | Vol + | Play/Pause |   |      | LFT | DWN |  UP | RGT |     |     |
-// | BTCLR | BT1 | BT2 | BT3 | BT4 | BT5 |   |            |     |     |     |     |     |     |
-//                    |     |     |    |                  |     |     |     |
-                        bindings = <
-   &trans     &kp F1        &kp F2       &kp F3       &kp F4       &kp F5          &kp F6   &kp F7   &kp F8 &kp F9    &kp F10 &kp F11
-   &trans     &kp C_PREV    &kp C_NEXT   &kp C_VOL_DN &kp C_VOL_UP &kp C_PP        &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &bt BT_CLR &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4    &trans   &trans   &trans &trans    &trans &trans
-                          	                        &trans   &trans   &trans       &trans   &trans   &trans
-                        >;
-                };
-
-                workspace_layer {
-// -----------------------------------------------------------------------------------------
-// |CPWRD|  1   |  2   |  3   |  4   |  5   |   |  6   |  7   |  8   |  9   |  0   |PSCRN|
-// |     |      |      | SHFT |  F   |      |   | PgUp | Home |  UP  | End  |   ;  | RET |
-// |     |      |      |      |      |      |   | PgDn | LEFT | DOWN | RGHT |      |     |
-//                     | GUI  | LWR  | ALT  |   | INS  | DEL  | RSE  |
-                        bindings = <
-   &caps_word &kp N1 &kp N2 &kp N3 &kp N4 &kp N5    &kp N6   &kp N7   &kp N8   &kp N9  &kp N0 &kp PSCRN
-   &trans &trans &trans &kp LSHFT &trans &trans    &kp PG_UP &kp HOME &kp UP   &kp END  &trans &kp RET
-   &trans &trans &trans &trans &trans &trans    &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &trans &trans
-                        &trans &trans &trans    &kp INS   &kp DEL   &trans
-                        >;
-                };
-
-                numpad_layer {
-// -----------------------------------------------------------------------------------------
-// |LCLK |     |     |  UP |     |     |   |  /  |  7  |  8  |  9  |  -  |     |
-// |RCLK |     | LFT | DWN | RGT |     |   |  *  |  4  |  5  |  6  |  +  | RET |
-// |     |     |     |     |     |     |   |  0  |  1  |  2  |  3  |  .  |     |
-//                   | SPC |     |  H  |   |     |     |     |
-                        bindings = <
-   &mkp LCLK &trans &trans &kp UP &trans &trans    &kp FSLH &kp N7 &kp N8   &kp N9 &kp MINUS &trans
-   &mkp RCLK &trans &kp LEFT &kp DOWN &kp RIGHT &trans    &kp STAR &kp N4 &kp N5   &kp N6 &kp PLUS  &kp RET
-   &kp LGUI &trans &trans &trans &trans &trans    &kp N0   &kp N1 &kp N2   &kp N3 &kp DOT   &trans
-                        &kp SPACE &trans &kp H    &trans   &trans &trans
+               &td_base 5 3 &td_base 4 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 5 0
                         >;
                 };
 
                 russian_layer {
 // -----------------------------------------------------------------------------------------
 // Russian ЙЦУКЕН - punctuation uses macros to switch OS temporarily
-// |TAB/L6|  Й  |  Ц  |  У  |  К  |  Е  |   |  Н  |  Г  |  Ш  |  Щ  |  З  | L1    |
+// |TAB/L2|  Й  |  Ц  |  У  |  К  |  Е  |   |  Н  |  Г  |  Ш  |  Щ  |  З  | L4    |
 // |CTRL  |  Ф  |  Ы  |  В  |  А  |  П  |   |  Р  |  О  |  Л  |  Д  |  ;  | '/ALT |
 // |SHFT  |  Я  |  Ч  |  С  |  М  |  И  |   |  Т  |  Ь  |  ,  |  .  |  /  | SHFT  |
-//                    | WS  |L1/EN| RET |   | ESC | SPC |L2/WS|
-// Middle thumb: hold=L1, tap=to_en (switch to L0 + OS English). L6 via TAB hold.
+//                    | WS  |L4/EN| RET |   | ESC | SPC |L5/WS|
+// Middle thumb: hold=L4 (symbols), tap=to_en (switch to L0 + OS English). L2 via TAB hold.
                         bindings = <
-   &mo 6 &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &mo 1
+   &mo 2 &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &mo 4
    &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &en_semi &mt LALT SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &en_comma &en_dot &en_fslh &kp RSHFT
-                   &td_base 3 4 &ht_l1_en 1 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 3 2
+                   &td_base 5 3 &ht_l1_en 4 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 5 0
                         >;
                 };
 
@@ -331,6 +283,48 @@
    &trans &trans &trans &trans &trans &trans       &trans &trans &trans &trans &kp SEMI &kp SQT
    &trans &trans &trans &trans &trans &trans       &trans &kp RBKT &kp COMMA &kp DOT &trans &trans
                         &trans &to 0 &trans    &trans &trans &trans
+                        >;
+                };
+
+                numpad_layer {
+// -----------------------------------------------------------------------------------------
+// |LCLK |     |     |  UP |     |     |   |  /  |  7  |  8  |  9  |  -  |     |
+// |RCLK |     | LFT | DWN | RGT |     |   |  *  |  4  |  5  |  6  |  +  | RET |
+// |LGUI |     |     |     |     |     |   |  0  |  1  |  2  |  3  |  .  |     |
+//                   | SPC |     |  H  |   |     |     |     |
+                        bindings = <
+   &mkp LCLK &trans &trans &kp UP &trans &trans    &kp FSLH &kp N7 &kp N8   &kp N9 &kp MINUS &trans
+   &mkp RCLK &trans &kp LEFT &kp DOWN &kp RIGHT &trans    &kp STAR &kp N4 &kp N5   &kp N6 &kp PLUS  &kp RET
+   &kp LGUI &trans &trans &trans &trans &trans    &kp N0   &kp N1 &kp N2   &kp N3 &kp DOT   &trans
+                        &kp SPACE &trans &kp H    &trans   &trans &trans
+                        >;
+                };
+
+                symbols_layer {
+// -----------------------------------------------------------------------------------------
+// |      |  !  |  @  |  #  |  $  |    %     |   |  ^  |  &  |  *  |  (  |  )  |   \   |
+// |      |  1  |  2  |  3  |  4  |    5     |   |  -  |  =  |  `  |  [  |  ]  |  "|"  |
+// | SHFT |  6  |  7  |  8  |  9  |    0     |   |  _  |  +  |  ~  |  {  |  }  | RSHFT |
+//                     | GUI |     | ALT/ENT |   | HYPER/SPACE | BKSP |    |
+                        bindings = <
+   &trans    &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET  &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSLH
+   &trans    &kp N1   &kp N2 &kp N3   &kp N4   &kp N5      &kp MINUS  &kp EQUAL &kp GRAVE       &kp LBKT &kp RBKT &kp PIPE
+   &kp LSHFT &kp N6   &kp N7 &kp N8   &kp N9   &kp N0      &kp UNDER  &kp PLUS  &kp TILDE       &kp LBRC &kp RBRC &kp RSHFT
+                         &kp LGUI &trans  &tp LALT RET     &tp LC(LS(LA(LGUI))) SPACE &kp BSPC  &trans
+                        >;
+                };
+
+                workspace_layer {
+// -----------------------------------------------------------------------------------------
+// |CPWRD| Prev | Next|Vol- |Vol+ | Play|   |  6   |  7   |  8   |  9   |  0   |PSCRN|
+// |     | BT1  | BT2 | BT3 | BT4 | BT5 |   | PgUp | Home |  UP  | End  |      | RET |
+// |BTCLR|      |     |     |     |     |   | PgDn | LEFT | DOWN | RGHT |      |     |
+//                    |     |     |     |   | INS  | DEL  |      |
+                        bindings = <
+   &caps_word &kp C_PREV   &kp C_NEXT   &kp C_VOL_DN &kp C_VOL_UP &kp C_PP       &kp N6    &kp N7   &kp N8   &kp N9    &kp N0 &kp PSCRN
+   &trans     &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp PG_UP &kp HOME &kp UP   &kp END   &trans &kp RET
+   &bt BT_CLR &trans       &trans       &trans       &trans       &trans         &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &trans &trans
+                        &trans &trans &trans    &kp INS   &kp DEL   &trans
                         >;
                 };
         };
