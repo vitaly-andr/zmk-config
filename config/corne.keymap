@@ -178,7 +178,12 @@
             #binding-cells = <0>;
             wait-ms = <30>;
             tap-ms = <30>;
-            bindings = <&kp LA(LSHFT) &to 5>;
+            bindings
+              = <&macro_press &kp LALT>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LALT>
+              , <&to 5>
+              ;
           };
 
           to_en: switch_to_english {
