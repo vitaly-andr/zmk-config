@@ -240,41 +240,65 @@
           ru_comma: russian_comma {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&macro_tap &kp LC(LSHFT)>  // Switch to English
-                     , <&macro_tap &kp COMMA>       // Send comma
-                     , <&macro_tap &kp LA(LSHFT)>; // Switch back to Russian
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings
+              = <&macro_press &kp LCTRL>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LCTRL>
+              , <&macro_tap &kp COMMA>
+              , <&macro_press &kp LALT>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LALT>
+              ;
           };
 
           ru_dot: russian_dot {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&macro_tap &kp LC(LSHFT)>
-                     , <&macro_tap &kp DOT>
-                     , <&macro_tap &kp LA(LSHFT)>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings
+              = <&macro_press &kp LCTRL>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LCTRL>
+              , <&macro_tap &kp DOT>
+              , <&macro_press &kp LALT>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LALT>
+              ;
           };
 
           ru_fslh: russian_fslh {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&macro_tap &kp LC(LSHFT)>
-                     , <&macro_tap &kp FSLH>
-                     , <&macro_tap &kp LA(LSHFT)>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings
+              = <&macro_press &kp LCTRL>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LCTRL>
+              , <&macro_tap &kp FSLH>
+              , <&macro_press &kp LALT>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LALT>
+              ;
           };
 
           ru_semi: russian_semi {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&macro_tap &kp LC(LSHFT)>
-                     , <&macro_tap &kp SEMI>
-                     , <&macro_tap &kp LA(LSHFT)>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings
+              = <&macro_press &kp LCTRL>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LCTRL>
+              , <&macro_tap &kp SEMI>
+              , <&macro_press &kp LALT>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LALT>
+              ;
           };
         };
 
