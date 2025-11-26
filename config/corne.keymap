@@ -173,14 +173,12 @@
           };
 
           // Language switching macros - send combo to OS + switch layer
-          // Parameterized version (ignores param) for use with hold-tap
           to_ru: switch_to_russian {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&macro_tap &kp LA(LSHFT)>  // Alt+Shift -> OS switches to Russian
-                     , <&to 5>;                     // Switch keyboard to L5
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings = <&kp LA(LSHFT) &to 5>;
           };
 
           to_en: switch_to_english {
@@ -272,7 +270,7 @@
 //                    |NPAD | BASE| RET |   | ESC | SPC |L2/WS|
 //                    | /WS | /L1 |/SUP |   |/SUP |     |     |
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I     &kp O   &kp P    &to_ru 0
+   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I     &kp O   &kp P    &to_ru
    &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J &kp K     &kp L   &kp SEMI &mt LALT SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp RSHFT
                &td_base 3 4 &td_base 1 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 3 2
