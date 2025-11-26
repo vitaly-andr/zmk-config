@@ -298,13 +298,13 @@
 // |TAB/L6|  Й  |  Ц  |  У  |  К  |  Е  |   |  Н  |  Г  |  Ш  |  Щ  |  З  | L1    |
 // |CTRL  |  Ф  |  Ы  |  В  |  А  |  П  |   |  Р  |  О  |  Л  |  Д  |  ;  | '/ALT |
 // |SHFT  |  Я  |  Ч  |  С  |  М  |  И  |   |  Т  |  Ь  |  ,  |  .  |  /  | SHFT  |
-//                    | WS  |L6/L0| RET |   | ESC | SPC |L2/WS|
-// Middle thumb: hold=L6, tap=back to L0
+//                    | WS  |  L0 | RET |   | ESC | SPC |L2/WS|
+// Middle thumb: tap=back to L0. L6 access via TAB hold.
                         bindings = <
    &mo 6 &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &mo 1
    &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &en_semi &mt LALT SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &en_comma &en_dot &en_fslh &kp RSHFT
-                   &td_base 3 4 &td_base 6 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 3 2
+                   &td_base 3 4 &to 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 3 2
                         >;
                 };
 
