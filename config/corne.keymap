@@ -384,7 +384,7 @@
 // |SHFT  |  Я  |  Ч  |  С  |  М  |  И  |   |  Т  |  Ь  |  ,  |  .  |  /  | SHFT  |
 //                    | WS  |EN/L6| RET |   | ESC | SPC |L2/WS|
                         bindings = <
-   &mo 6 &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &lt_ru_l1 0 0
+   &mo 6 &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &mo 1
    &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &ru_semi &mt LALT SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &ru_comma &ru_dot &ru_fslh &kp RSHFT
                    &td_base 3 4 &td_base 6 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 3 2
