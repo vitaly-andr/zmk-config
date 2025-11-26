@@ -429,6 +429,27 @@
             tap-ms = <30>;
             bindings = <&macro_tap &kp LC(LS(U)) &kp N2 &kp N0 &kp N1 &kp N4 &kp SPACE>;
           };
+          uc_numero: unicode_numero { // №
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings = <&macro_tap &kp LC(LS(U)) &kp N2 &kp N1 &kp N1 &kp N6 &kp SPACE>;
+          };
+          uc_ellipsis: unicode_ellipsis { // …
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings = <&macro_tap &kp LC(LS(U)) &kp N2 &kp N0 &kp N2 &kp N6 &kp SPACE>;
+          };
+          uc_degree: unicode_degree { // °
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings = <&macro_tap &kp LC(LS(U)) &kp N0 &kp N0 &kp B &kp N0 &kp SPACE>;
+          };
         };
 
         keymap {
@@ -476,16 +497,16 @@
 
                 russian_extra_layer {
 // -----------------------------------------------------------------------------------------
-// Extra Russian letters: Ж Э Б Ю Х Ъ Ё (on punctuation positions)
-// |     |     |     |     |     |  Ё  |   |     |     |     |     |  Х  |     |
+// Extra Russian letters + symbols: Ж Э Б Ю Х Ъ Ё № … °
+// |     |  …  |     |  №  |  °  |  Ё  |   |     |     |     |     |  Х  |     |
 // |     |     |     |     |     |     |   |     |     |     |     |  Ж  |  Э  |
 // |     |     |     |     |     |     |   |     |  Ъ  |  Б  |  Ю  |     |     |
-//                   |     | BASE|     |   |     |     |     |
+//                   |     |     |     |   |     |     |     |
                         bindings = <
-   &trans &trans &trans &trans &trans &kp GRAVE    &trans &trans &trans &trans &kp LBKT &trans
+   &trans &uc_ellipsis &trans &uc_numero &uc_degree &kp GRAVE    &trans &trans &trans &trans &kp LBKT &trans
    &trans &trans &trans &trans &trans &trans       &trans &trans &trans &trans &kp SEMI &kp SQT
    &trans &trans &trans &trans &trans &trans       &trans &kp RBKT &kp COMMA &kp DOT &trans &trans
-                        &trans &to 0 &trans    &trans &trans &trans
+                        &trans &trans &trans    &trans &trans &trans
                         >;
                 };
 
