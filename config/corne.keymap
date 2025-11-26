@@ -643,7 +643,7 @@
    &uc_check &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT       &kp CARET  &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSLH
    &uc_xmark &uc_euro &uc_pound &uc_ruble &uc_rupee &uc_yen   &kp MINUS  &kp EQUAL &kp GRAVE       &kp LBKT &kp RBKT &kp PIPE
    &uc_star  &uc_m2   &uc_m3 &uc_lguil &uc_rguil &uc_emdash   &kp UNDER  &kp PLUS  &kp TILDE       &kp LBRC &kp RBRC &uc_diamond
-                         &trans &trans  &trans     &trans &trans  &trans
+                         &trans &trans  &trans     &trans &kp BSPC  &trans
                         >;
                 };
 
