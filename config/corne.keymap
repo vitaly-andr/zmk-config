@@ -593,13 +593,14 @@
 // |TAB/L2|  Й  |  Ц  |  У  |  К  |  Е  |   |  Н  |  Г  |  Ш  |  Щ  |  З  | L4    |
 // |CTRL  |  Ф  |  Ы  |  В  |  А  |  П  |   |  Р  |  О  |  Л  |  Д  |  ;  | '/ALT |
 // |SHFT  |  Я  |  Ч  |  С  |  М  |  И  |   |  Т  |  Ь  |  ,  |  .  |  /  | SHFT  |
-//                    | WS  |L4/EN|GUI/R|   |GUI/E| SPC |L5/WS|
+//                    |NPAD |L4/EN|GUI/R|   |GUI/E| SPC |HYPER|
+//                    | /WS |     |     |   |     |     | /WS |
 // CTRL: switches to EN while held. GUI on thumbs: hold=GUI+EN/RU, tap=RET/ESC.
                         bindings = <
    &mo 2 &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &mo 4
    &ctrl_en_ru &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &en_semi &mt LALT SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &en_comma &en_dot &en_fslh &kp RSHFT
-                   &td_base 5 3 &ht_l4_en 4 0 &ht_gui_en 0 RET   &ht_gui_en 0 ESC &kp SPACE &td_base 5 0
+                   &td_base 5 3 &ht_l4_en 4 0 &ht_gui_en 0 RET   &ht_gui_en 0 ESC &kp SPACE &ht_ws_hyper 5 LC(LS(LA(LGUI)))
                         >;
                 };
 
