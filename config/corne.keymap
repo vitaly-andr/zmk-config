@@ -54,8 +54,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOLD_L1_TAP_EN";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "balanced";
+            tapping-term-ms = <300>;
+            flavor = "hold-preferred";
             bindings = <&mo>, <&to_en>;  // hold=mo(param), tap=to_en(ignored)
           };
 
