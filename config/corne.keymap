@@ -59,6 +59,16 @@
             bindings = <&mo_en_ru>, <&to_en>;  // hold=mo_en_ru(L4 with lang switch), tap=to_en
           };
 
+          // For Russian layer thumbs: hold=GUI with EN/RU switch, tap=key
+          ht_gui_en: hold_gui_en_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_GUI_EN_TAP";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "hold-preferred";
+            bindings = <&gui_en_ru_param>, <&kp>;
+          };
+
         };
 
         macros {
@@ -478,6 +488,64 @@
             tap-ms = <30>;
             bindings = <&macro_tap &kp LC(LS(U)) &kp N2 &kp N6 &kp N6 &kp N6 &kp SPACE>;
           };
+
+          // Modifier macros with EN/RU switch for Russian layer
+          // On press: switch to EN, hold modifier
+          // On release: release modifier, switch back to RU
+          ctrl_en_ru: ctrl_english_russian {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings
+              = <&macro_press &kp LCTRL>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LCTRL>
+              , <&macro_press &kp LCTRL>
+              , <&macro_pause_for_release>
+              , <&macro_release &kp LCTRL>
+              , <&macro_press &kp LALT>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LALT>
+              ;
+          };
+
+          gui_en_ru: gui_english_russian {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings
+              = <&macro_press &kp LCTRL>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LCTRL>
+              , <&macro_press &kp LGUI>
+              , <&macro_pause_for_release>
+              , <&macro_release &kp LGUI>
+              , <&macro_press &kp LALT>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LALT>
+              ;
+          };
+
+          // Parameterized version for hold-tap (ignores parameter, just holds GUI with EN/RU)
+          gui_en_ru_param: gui_english_russian_param {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings
+              = <&macro_press &kp LCTRL>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LCTRL>
+              , <&macro_press &kp LGUI>
+              , <&macro_pause_for_release>
+              , <&macro_release &kp LGUI>
+              , <&macro_press &kp LALT>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LALT>
+              ;
+          };
         };
 
         keymap {
@@ -510,16 +578,17 @@
                 russian_layer {
 // -----------------------------------------------------------------------------------------
 // Russian ЙЦУКЕН - punctuation uses macros to switch OS temporarily
+// CTRL and GUI switch to EN while held, back to RU on release
 // |TAB/L2|  Й  |  Ц  |  У  |  К  |  Е  |   |  Н  |  Г  |  Ш  |  Щ  |  З  | L4    |
 // |CTRL  |  Ф  |  Ы  |  В  |  А  |  П  |   |  Р  |  О  |  Л  |  Д  |  ;  | '/ALT |
 // |SHFT  |  Я  |  Ч  |  С  |  М  |  И  |   |  Т  |  Ь  |  ,  |  .  |  /  | SHFT  |
-//                    | WS  |L4/EN| RET |   | ESC | SPC |L5/WS|
-// Middle thumb: hold=L4 (symbols), tap=to_en (switch to L0 + OS English). L2 via TAB hold.
+//                    | WS  |L4/EN|GUI/R|   |GUI/E| SPC |L5/WS|
+// CTRL: switches to EN while held. GUI on thumbs: hold=GUI+EN/RU, tap=RET/ESC.
                         bindings = <
    &mo 2 &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &mo 4
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &en_semi &mt LALT SQT
+   &ctrl_en_ru &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &en_semi &mt LALT SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &en_comma &en_dot &en_fslh &kp RSHFT
-                   &td_base 5 3 &ht_l4_en 4 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 5 0
+                   &td_base 5 3 &ht_l4_en 4 0 &ht_gui_en 0 RET   &ht_gui_en 0 ESC &kp SPACE &td_base 5 0
                         >;
                 };
 
