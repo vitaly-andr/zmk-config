@@ -50,32 +50,33 @@
           };
 
           // Hold-tap for language switching: hold=keypress, tap=language switch macro
+          // #binding-cells must be 2 for hold-tap. Usage: &ht_ru LALT 0 (second param ignored)
           ht_ru: hold_tap_russian {
             compatible = "zmk,behavior-hold-tap";
             label = "HOLD_TAP_RUSSIAN";
-            #binding-cells = <1>;
+            #binding-cells = <2>;
             tapping-term-ms = <280>;
             flavor = "hold-preferred";
-            bindings = <&kp>, <&to_ru>;  // hold=kp(param), tap=to_ru(param ignored)
+            bindings = <&kp>, <&to_ru>;  // hold=kp(param1), tap=to_ru(param2 ignored)
           };
 
           ht_en: hold_tap_english {
             compatible = "zmk,behavior-hold-tap";
             label = "HOLD_TAP_ENGLISH";
-            #binding-cells = <1>;
+            #binding-cells = <2>;
             tapping-term-ms = <280>;
             flavor = "hold-preferred";
-            bindings = <&kp>, <&to_en>;  // hold=kp(param), tap=to_en(param ignored)
+            bindings = <&kp>, <&to_en>;  // hold=kp(param1), tap=to_en(param2 ignored)
           };
 
           // For Russian layer: hold=mo layer, tap=switch to English
           td_en: tap_dance_english {
             compatible = "zmk,behavior-hold-tap";
             label = "TAP_TO_ENGLISH";
-            #binding-cells = <1>;
+            #binding-cells = <2>;
             tapping-term-ms = <280>;
             flavor = "hold-preferred";
-            bindings = <&mo>, <&to_en>;  // hold=mo(param), tap=to_en(param ignored)
+            bindings = <&mo>, <&to_en>;  // hold=mo(param1), tap=to_en(param2 ignored)
           };
         };
 
@@ -224,7 +225,7 @@
 //                    |NPAD | BASE| RET |   | ESC | SPC |L2/WS|
 //                    | /WS | /L1 |/SUP |   |/SUP |     |     |
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I     &kp O   &kp P    &ht_ru LALT
+   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I     &kp O   &kp P    &ht_ru LALT 0
    &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J &kp K     &kp L   &kp SEMI &lt 1 SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp RSHFT
                &td_base 3 4 &td_base 1 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 3 2
@@ -295,10 +296,10 @@
 // |SHFT |  Я  |  Ч  |  С  |  М  |  И  |   |  Т  |  Ь  |  ,  |  .  |  /  | SHFT  |
 //                   | WS  |EN/L6| RET |   | ESC | SPC |L2/WS|
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &ht_ru LALT
+   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &ht_ru LALT 0
    &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &ru_semi &lt 6 SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &ru_comma &ru_dot &ru_fslh &kp RSHFT
-                   &td_base 3 4 &td_en 6 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 3 2
+                   &td_base 3 4 &td_en 6 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 3 2
                         >;
                 };
 
