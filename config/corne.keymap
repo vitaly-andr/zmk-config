@@ -55,8 +55,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_RUSSIAN";
             #binding-cells = <2>;
-            tapping-term-ms = <280>;
-            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            flavor = "balanced";
             bindings = <&mo>, <&to_ru>;  // hold=mo(param1), tap=to_ru(param2 ignored)
           };
 
@@ -79,14 +79,14 @@
             bindings = <&en_l6>, <&to_en>;  // hold=L6 with EN switch, tap=to_en (base)
           };
 
-          // For Russian layer top-right: hold=L1 with English OS, tap=Russian (no-op)
+          // For Russian layer top-right: hold=L1 with English OS, tap=switch to English
           lt_ru_l1: layer_tap_russian_l1 {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_RU_L1";
             #binding-cells = <2>;
-            tapping-term-ms = <280>;
-            flavor = "hold-preferred";
-            bindings = <&en_l1>, <&to_ru>;  // hold=en_l1(param ignored), tap=to_ru(param ignored)
+            tapping-term-ms = <200>;
+            flavor = "balanced";
+            bindings = <&en_l1>, <&to_en>;  // hold=en_l1(param ignored), tap=to_en (switch to English)
           };
 
           // For Russian layer TAB: hold=L6 with EN/RU switch, tap=TAB
