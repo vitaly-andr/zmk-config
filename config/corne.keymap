@@ -450,6 +450,34 @@
             tap-ms = <30>;
             bindings = <&macro_tap &kp LC(LS(U)) &kp N0 &kp N0 &kp B &kp N0 &kp SPACE>;
           };
+          uc_check: unicode_checkmark { // ✓
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings = <&macro_tap &kp LC(LS(U)) &kp N2 &kp N7 &kp N1 &kp N3 &kp SPACE>;
+          };
+          uc_xmark: unicode_xmark { // ✗
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings = <&macro_tap &kp LC(LS(U)) &kp N2 &kp N7 &kp N1 &kp N7 &kp SPACE>;
+          };
+          uc_star: unicode_star { // ★
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings = <&macro_tap &kp LC(LS(U)) &kp N2 &kp N6 &kp N0 &kp N5 &kp SPACE>;
+          };
+          uc_diamond: unicode_diamond { // ♦
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings = <&macro_tap &kp LC(LS(U)) &kp N2 &kp N6 &kp N6 &kp N6 &kp SPACE>;
+          };
         };
 
         keymap {
@@ -526,14 +554,14 @@
 
                 symbols_layer {
 // -----------------------------------------------------------------------------------------
-// |      |  !  |  @  |  #  |  $  |    %     |   |  ^  |  &  |  *  |  (  |  )  |   \   |
-// |      |  €  |  £  |  ₽  |  ₹  |    ¥     |   |  -  |  =  |  `  |  [  |  ]  |  "|"  |
-// |      |  m² |  m³ |  «  |  »  |    —     |   |  _  |  +  |  ~  |  {  |  }  |       |
+// |  ✓   |  !  |  @  |  #  |  $  |    %     |   |  ^  |  &  |  *  |  (  |  )  |   \   |
+// |  ✗   |  €  |  £  |  ₽  |  ₹  |    ¥     |   |  -  |  =  |  `  |  [  |  ]  |  "|"  |
+// |  ★   |  m² |  m³ |  «  |  »  |    —     |   |  _  |  +  |  ~  |  {  |  }  |   ♦   |
 //                     |     |     |         |   |             |      |    |
                         bindings = <
-   &trans    &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT       &kp CARET  &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSLH
-   &trans    &uc_euro &uc_pound &uc_ruble &uc_rupee &uc_yen   &kp MINUS  &kp EQUAL &kp GRAVE       &kp LBKT &kp RBKT &kp PIPE
-   &trans    &uc_m2   &uc_m3 &uc_lguil &uc_rguil &uc_emdash   &kp UNDER  &kp PLUS  &kp TILDE       &kp LBRC &kp RBRC &trans
+   &uc_check &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT       &kp CARET  &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSLH
+   &uc_xmark &uc_euro &uc_pound &uc_ruble &uc_rupee &uc_yen   &kp MINUS  &kp EQUAL &kp GRAVE       &kp LBKT &kp RBKT &kp PIPE
+   &uc_star  &uc_m2   &uc_m3 &uc_lguil &uc_rguil &uc_emdash   &kp UNDER  &kp PLUS  &kp TILDE       &kp LBRC &kp RBRC &uc_diamond
                          &trans &trans  &trans     &trans &trans  &trans
                         >;
                 };
