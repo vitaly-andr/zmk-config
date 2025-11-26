@@ -192,9 +192,9 @@
                      , <&macro_release &kp LGUI>;
           };
 
-          // Language switching macros - send combo to OS + toggle layer 5
-          // Using &tog 5 since &to doesn't work in macros
-          to_ru: switch_to_russian {
+          // OS language switching macros - ONLY change OS language, NO layer change
+          // Layer switching is done separately on workspace layer
+          os_ru: os_switch_to_russian {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <30>;
@@ -203,11 +203,10 @@
               = <&macro_press &kp LALT>
               , <&macro_tap &kp LSHFT>
               , <&macro_release &kp LALT>
-              , <&tog 5>
               ;
           };
 
-          to_en: switch_to_english {
+          os_en: os_switch_to_english {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             wait-ms = <30>;
@@ -216,7 +215,6 @@
               = <&macro_press &kp LCTRL>
               , <&macro_tap &kp LSHFT>
               , <&macro_release &kp LCTRL>
-              , <&tog 5>
               ;
           };
 
@@ -319,13 +317,14 @@
 
                 default_layer {
 // -----------------------------------------------------------------------------------------
-// | TAB  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  | RU/L1 |
+// | TAB  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  |  L5   |
 // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  | '/ALT |
 // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  | SHFT  |
 //                    |NPAD | BASE| RET |   | ESC | SPC |L2/WS|
 //                    | /WS | /L1 |/SUP |   |/SUP |     |     |
+// Top-right: switch to layer 5 (Russian). OS language switch via workspace layer.
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I     &kp O   &kp P    &to_ru
+   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I     &kp O   &kp P    &to 5
    &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J &kp K     &kp L   &kp SEMI &mt LALT SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp RSHFT
                &td_base 3 4 &td_base 1 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 3 2
@@ -362,14 +361,15 @@
 
                 workspace_layer {
 // -----------------------------------------------------------------------------------------
-// |CPWRD|  1   |  2   |  3   |  4   |  5   |   |  6   |  7   |  8   |  9   |  0   |PRINT|
+// |CPWRD|  1   |  2   |  3   |  4   |  5   |   |  6   |  7   |  8   |  9   |  0   |OS_RU|
 // |     |      |      | SHFT |  F   |      |   | PgUp | Home |  UP  | End  |   ;  | RET |
-// |     |      |      |      |      |      |   | PgDn | LEFT | DOWN | RGHT |      |     |
+// |     |      |      |      |      |      |   | PgDn | LEFT | DOWN | RGHT |      |OS_EN|
 //                     | GUI  | LWR  | ALT  |   | INS  | DEL  | RSE  |
+// Top-right: OS switch to Russian. Bottom-right: OS switch to English.
                         bindings = <
-   &caps_word &kp N1 &kp N2 &kp N3 &kp N4 &kp N5    &kp N6   &kp N7   &kp N8   &kp N9  &kp N0 &kp PSCRN
+   &caps_word &kp N1 &kp N2 &kp N3 &kp N4 &kp N5    &kp N6   &kp N7   &kp N8   &kp N9  &kp N0 &os_ru
    &trans &trans &trans &kp LSHFT &trans &trans    &kp PG_UP &kp HOME &kp UP   &kp END  &trans &kp RET
-   &trans &trans &trans &trans &trans &trans    &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &trans &trans
+   &trans &trans &trans &trans &trans &trans    &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &trans &os_en
                         &trans &trans &trans    &kp INS   &kp DEL   &trans
                         >;
                 };
@@ -391,15 +391,16 @@
                 russian_layer {
 // -----------------------------------------------------------------------------------------
 // Russian ЙЦУКЕН - punctuation uses macros to switch OS temporarily
-// |TAB/L6|  Й  |  Ц  |  У  |  К  |  Е  |   |  Н  |  Г  |  Ш  |  Щ  |  З  |L1(EN) |
+// |TAB/L6|  Й  |  Ц  |  У  |  К  |  Е  |   |  Н  |  Г  |  Ш  |  Щ  |  З  | L1    |
 // |CTRL  |  Ф  |  Ы  |  В  |  А  |  П  |   |  Р  |  О  |  Л  |  Д  |  ;  | '/ALT |
 // |SHFT  |  Я  |  Ч  |  С  |  М  |  И  |   |  Т  |  Ь  |  ,  |  .  |  /  | SHFT  |
-//                    | WS  |EN/L6| RET |   | ESC | SPC |L2/WS|
+//                    | WS  |L6/L0| RET |   | ESC | SPC |L2/WS|
+// Middle thumb: hold=L6, tap=back to L0
                         bindings = <
    &mo 6 &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &mo 1
    &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &en_semi &mt LALT SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &en_comma &en_dot &en_fslh &kp RSHFT
-                   &td_base 3 4 &ht_l6_en 6 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 3 2
+                   &td_base 3 4 &td_base 6 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 3 2
                         >;
                 };
 
