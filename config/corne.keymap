@@ -311,15 +311,15 @@
 
                 numpad_layer {
 // -----------------------------------------------------------------------------------------
-// |LCLK |     |     |  UP |     |     |   |  /  |  7  |  8  |  9  |  -  |     |
+// |LCLK |     |     |  UP |     |     |   |  /  |  7  |  8  |  9  |  -  |  =  |
 // |RCLK |     | LFT | DWN | RGT |     |   |  *  |  4  |  5  |  6  |  +  | RET |
-// |LGUI |     |     |     |     |     |   |  0  |  1  |  2  |  3  |  .  |     |
-//                   | SPC |     |  H  |   |     |     |     |
+// |LGUI |     |     |     |     |     |   |  0  |  1  |  2  |  3  |  .  |  %  |
+//                   |     |     |     |   |     |     |     |
                         bindings = <
-   &mkp LCLK &trans &trans &kp UP &trans &trans    &kp FSLH &kp N7 &kp N8   &kp N9 &kp MINUS &trans
+   &mkp LCLK &trans &trans &kp UP &trans &trans    &kp FSLH &kp N7 &kp N8   &kp N9 &kp MINUS &kp EQUAL
    &mkp RCLK &trans &kp LEFT &kp DOWN &kp RIGHT &trans    &kp STAR &kp N4 &kp N5   &kp N6 &kp PLUS  &kp RET
-   &kp LGUI &trans &trans &trans &trans &trans    &kp N0   &kp N1 &kp N2   &kp N3 &kp DOT   &trans
-                        &kp SPACE &trans &kp H    &trans   &trans &trans
+   &kp LGUI &trans &trans &trans &trans &trans    &kp N0   &kp N1 &kp N2   &kp N3 &kp DOT   &kp PRCNT
+                        &trans &trans &trans    &trans   &trans &trans
                         >;
                 };
 
