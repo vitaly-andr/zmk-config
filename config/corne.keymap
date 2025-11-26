@@ -192,22 +192,8 @@
                      , <&macro_release &kp LGUI>;
           };
 
-          // Toggle behaviors for explicit layer on/off (for use in macros)
-          tog_on_5: toggle_on_layer5 {
-            compatible = "zmk,behavior-toggle-layer";
-            #binding-cells = <0>;
-            layer = <5>;
-            toggle-mode = "on";
-          };
-
-          tog_off_5: toggle_off_layer5 {
-            compatible = "zmk,behavior-toggle-layer";
-            #binding-cells = <0>;
-            layer = <5>;
-            toggle-mode = "off";
-          };
-
-          // Language switching macros - send combo to OS + switch layer
+          // Language switching macros - send combo to OS + toggle layer 5
+          // Using &tog 5 since &to doesn't work in macros
           to_ru: switch_to_russian {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -217,7 +203,7 @@
               = <&macro_press &kp LALT>
               , <&macro_tap &kp LSHFT>
               , <&macro_release &kp LALT>
-              , <&tog_on_5>
+              , <&tog 5>
               ;
           };
 
@@ -230,7 +216,7 @@
               = <&macro_press &kp LCTRL>
               , <&macro_tap &kp LSHFT>
               , <&macro_release &kp LCTRL>
-              , <&tog_off_5>
+              , <&tog 5>
               ;
           };
 
