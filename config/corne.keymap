@@ -199,27 +199,31 @@
 
                 russian_layer {
 // -----------------------------------------------------------------------------------------
-// | TAB |  Й  |  Ц  |  У  |  К  |  Е  |   |  Н  |  Г  |  Ш  |  Щ  |  З  | Х   |
-// |CTRL |  Ф  |  Ы  |  В  |  А  |  П  |   |  Р  |  О  |  Л  |  Д  |  Ж  | Э   |
-// |SHFT |  Я  |  Ч  |  С  |  М  |  И  |   |  Т  |  Ь  |  Б  |  Ю  |  .  |SHFT |
-//                   | GUI | L1  | RET |   | BKSP| SPC |     |
+// Russian ЙЦУКЕН - punctuation transparent (English), extra letters on L6
+// | TAB |  Й  |  Ц  |  У  |  К  |  Е  |   |  Н  |  Г  |  Ш  |  Щ  |  З  |ESC/ALT|
+// |CTRL |  Ф  |  Ы  |  В  |  А  |  П  |   |  Р  |  О  |  Л  |  Д  |  ;  | '/L6  |
+// |SHFT |  Я  |  Ч  |  С  |  М  |  И  |   |  Т  |  Ь  |  ,  |  .  |  /  | SHFT  |
+//                   | WS  |L6/L0| RET |   | ESC | SPC |L2/WS|
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp LBKT
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp RSHFT
-                   &kp LGUI &to 0 &kp RET   &kp BSPC &kp SPACE &trans
+   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &mt LALT ESC
+   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &trans   &lt 6 SQT
+   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &trans    &trans  &trans   &kp RSHFT
+                   &td_base 3 4 &td_base 6 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 3 2
                         >;
                 };
 
-                reserved_layer {
+                russian_extra_layer {
 // -----------------------------------------------------------------------------------------
-// Reserved for future use
-//                   |     |     |     |   |     |     |     |
+// Extra Russian letters: Ж Э Б Ю Х Ъ Ё (on punctuation positions)
+// |     |     |     |     |     |  Ё  |   |     |     |     |     |  Х  |     |
+// |     |     |     |     |     |     |   |     |     |     |     |  Ж  |  Э  |
+// |     |     |     |     |     |     |   |     |  Ъ  |  Б  |  Ю  |     |     |
+//                   |     | BASE|     |   |     |     |     |
                         bindings = <
-   &trans &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans &trans
-   &trans &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans &trans
-   &trans &trans &trans &trans &trans &trans    &trans &trans &trans &trans &trans &trans
-                        &trans &trans &trans    &trans &trans &trans
+   &trans &trans &trans &trans &trans &kp GRAVE    &trans &trans &trans &trans &kp LBKT &trans
+   &trans &trans &trans &trans &trans &trans       &trans &trans &trans &trans &kp SEMI &kp SQT
+   &trans &trans &trans &trans &trans &trans       &trans &kp RBKT &kp COMMA &kp DOT &trans &trans
+                        &trans &to 0 &trans    &trans &trans &trans
                         >;
                 };
         };
