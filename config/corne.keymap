@@ -69,6 +69,16 @@
             bindings = <&gui_en_ru_param>, <&kp>;
           };
 
+          // Hold=Workspace layer, Tap=Sticky Hyper
+          ht_ws_hyper: hold_ws_tap_hyper {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_WS_TAP_HYPER";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "balanced";
+            bindings = <&mo>, <&sk>;
+          };
+
         };
 
         macros {
@@ -564,14 +574,15 @@
 // | TAB  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  | RU    |
 // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  | '/ALT |
 // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  | SHFT  |
-//                    |NPAD |L4/L0| RET |   | ESC | SPC |L5/WS|
-//                    | /WS |     |/SUP |   |/SUP |     |     |
+//                    |NPAD |L4/L0| RET |   | ESC | SPC |HYPER|
+//                    | /WS |     |/SUP |   |/SUP |     | /WS |
 // Top-right: &to_ru macro (switch to L1 + Alt+Shift for OS Russian)
+// Right outer thumb: tap=sticky Hyper, hold=Workspace layer
                         bindings = <
    &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I     &kp O   &kp P    &to_ru
    &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J &kp K     &kp L   &kp SEMI &mt LALT SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp RSHFT
-               &td_base 5 3 &td_base 4 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 5 0
+               &td_base 5 3 &td_base 4 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &ht_ws_hyper 5 LC(LS(LA(LGUI)))
                         >;
                 };
 
