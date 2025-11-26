@@ -128,17 +128,16 @@
 
                 default_layer {
 // -----------------------------------------------------------------------------------------
-// | TAB  |  Q  |  W  |  E  |  R  |    T    |   |  Y  |  U   |  I  |  O  |  P  | ESC |
-// | CTRL |  A  |  S  |  D  |  F  |    G    |   |  H  |  J   |  K  |  L  |  ;  |  LWR/'   |
-// |      |     | /ALT| /SFT|     |         |   |     |      | /SFT| /ALT|     |          |
-// | SHFT |  Z  |  X  |  C  |  V  |    B    |   |  N  |  M   |  ,  |  .  |  /  | SHFT |
-//                    |NUMPAD| BASE | SUP+  |   | ESC  | SPC  |  L6  |
-//                    | /GUI | /L1  | SHFT  |   | /GUI |      | /SFT |
+// | TAB  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  |ESC/ALT|
+// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  | '/L1  |
+// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  | SHFT  |
+//                    |NPAD | BASE| RET |   | ESC | SPC |L2/WS|
+//                    | /WS | /L1 |/SUP |   |/SUP |     |     |
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U    &kp I     &kp O   &kp P    &hm LALT ESC
-   &kp LCTRL &kp A &hm LALT S &hm LSHFT D &lt 3 F &kp G   &kp H &lt 3 J &hm RSHFT K &hm RALT L   &kp SEMI &lt 1 SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &mo 2
-               &lt_rev LGUI 4 &td_base 1 0 &hm LS(LGUI) RET   &hm LGUI ESC &kp SPACE &lt_rev RSHFT 6
+   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I     &kp O   &kp P    &mt LALT ESC
+   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J &kp K     &kp L   &kp SEMI &lt 1 SQT
+   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp RSHFT
+               &td_base 3 4 &td_base 1 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 3 2
                         >;
                 };
 
