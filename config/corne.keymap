@@ -44,9 +44,19 @@
             compatible = "zmk,behavior-hold-tap";
             label = "TAP_TO_BASE";
             #binding-cells = <2>;
-            tapping-term-ms = <280>;
-            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            flavor = "balanced";
             bindings = <&mo>, <&to>;  // hold=mo layer, tap=to layer
+          };
+
+          // Layer-tap for Russian layer TAB -> hold=layer 6, tap=TAB
+          lt_l6: layer_tap_l6 {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_TAP_L6";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "balanced";
+            bindings = <&mo>, <&kp>;  // hold=mo layer, tap=kp
           };
 
           // Hold-tap for language switching: hold=layer, tap=language switch macro
@@ -350,7 +360,7 @@
 // |SHFT  |  Я  |  Ч  |  С  |  М  |  И  |   |  Т  |  Ь  |  ,  |  .  |  /  | SHFT  |
 //                    | WS  |EN/L6| RET |   | ESC | SPC |L2/WS|
                         bindings = <
-   &lt 6 TAB &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &lt_ru_l1 0 0
+   &lt_l6 6 TAB &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &lt_ru_l1 0 0
    &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &ru_semi &mt LALT SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &ru_comma &ru_dot &ru_fslh &kp RSHFT
                    &td_base 3 4 &td_base 6 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 3 2
