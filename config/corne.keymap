@@ -236,67 +236,79 @@
                      , <&macro_tap &kp LA(LSHFT)>;     // Switch OS back to Russian
           };
 
-          // Punctuation macros for Russian layer - switch to EN, send key, switch back to RU
-          ru_comma: russian_comma {
+          // English punctuation macros for Russian layer - switch to EN, send key, switch back to RU
+          en_comma: english_comma {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <30>;
-            tap-ms = <30>;
+            wait-ms = <50>;
+            tap-ms = <50>;
             bindings
               = <&macro_press &kp LCTRL>
-              , <&macro_tap &kp LSHFT>
+              , <&macro_press &kp LSHFT>
+              , <&macro_release &kp LSHFT>
               , <&macro_release &kp LCTRL>
+              , <&macro_wait_time 50>
               , <&macro_tap &kp COMMA>
               , <&macro_press &kp LALT>
-              , <&macro_tap &kp LSHFT>
+              , <&macro_press &kp LSHFT>
+              , <&macro_release &kp LSHFT>
               , <&macro_release &kp LALT>
               ;
           };
 
-          ru_dot: russian_dot {
+          en_dot: english_dot {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <30>;
-            tap-ms = <30>;
+            wait-ms = <50>;
+            tap-ms = <50>;
             bindings
               = <&macro_press &kp LCTRL>
-              , <&macro_tap &kp LSHFT>
+              , <&macro_press &kp LSHFT>
+              , <&macro_release &kp LSHFT>
               , <&macro_release &kp LCTRL>
+              , <&macro_wait_time 50>
               , <&macro_tap &kp DOT>
               , <&macro_press &kp LALT>
-              , <&macro_tap &kp LSHFT>
+              , <&macro_press &kp LSHFT>
+              , <&macro_release &kp LSHFT>
               , <&macro_release &kp LALT>
               ;
           };
 
-          ru_fslh: russian_fslh {
+          en_fslh: english_fslh {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <30>;
-            tap-ms = <30>;
+            wait-ms = <50>;
+            tap-ms = <50>;
             bindings
               = <&macro_press &kp LCTRL>
-              , <&macro_tap &kp LSHFT>
+              , <&macro_press &kp LSHFT>
+              , <&macro_release &kp LSHFT>
               , <&macro_release &kp LCTRL>
+              , <&macro_wait_time 50>
               , <&macro_tap &kp FSLH>
               , <&macro_press &kp LALT>
-              , <&macro_tap &kp LSHFT>
+              , <&macro_press &kp LSHFT>
+              , <&macro_release &kp LSHFT>
               , <&macro_release &kp LALT>
               ;
           };
 
-          ru_semi: russian_semi {
+          en_semi: english_semi {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            wait-ms = <30>;
-            tap-ms = <30>;
+            wait-ms = <50>;
+            tap-ms = <50>;
             bindings
               = <&macro_press &kp LCTRL>
-              , <&macro_tap &kp LSHFT>
+              , <&macro_press &kp LSHFT>
+              , <&macro_release &kp LSHFT>
               , <&macro_release &kp LCTRL>
+              , <&macro_wait_time 50>
               , <&macro_tap &kp SEMI>
               , <&macro_press &kp LALT>
-              , <&macro_tap &kp LSHFT>
+              , <&macro_press &kp LSHFT>
+              , <&macro_release &kp LSHFT>
               , <&macro_release &kp LALT>
               ;
           };
@@ -385,8 +397,8 @@
 //                    | WS  |EN/L6| RET |   | ESC | SPC |L2/WS|
                         bindings = <
    &mo 6 &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &mo 1
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &ru_semi &mt LALT SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &ru_comma &ru_dot &ru_fslh &kp RSHFT
+   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &en_semi &mt LALT SQT
+   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &en_comma &en_dot &en_fslh &kp RSHFT
                    &td_base 3 4 &td_base 6 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &td_base 3 2
                         >;
                 };
