@@ -849,7 +849,7 @@
    &caps_word &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6    &kp N7   &kp N8   &kp N9    &kp N0    &kp PSCRN
    &kp LCTRL  &kp C_PREV   &kp C_NEXT   &kp C_VOL_DN &kp C_VOL_UP &kp C_PP       &kp INS   &kp HOME &kp UP   &kp END   &kp PG_UP &mt LALT RET
    &kp LSHFT  &bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3   &kp DEL   &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN &kp RSHFT
-                        &trans &trans &ht_gui_toggle LGUI 0    &trans   &kp BSPC   &trans
+                        &trans &trans &trans    &trans   &kp BSPC   &trans
                         >;
                 };
 
@@ -859,12 +859,12 @@
 // |     |     |     |     |     |     |   |     |     |     |     |     |     |
 // |     |     | ALT |SHIFT| GUI |     |   |     |     |     |     |     |     |
 // |     |     |     |     |     |     |   |     |     |     |     |     |     |
-//                   |     |     |     |   |     |     | WS  |
+//                   |     |     |LANG |   |     |     | WS  |
                         bindings = <
    &trans &trans &trans   &trans    &trans   &trans    &trans &trans &trans &trans &trans &trans
    &trans &trans &kp LALT &kp LSHFT &kp LGUI &trans    &trans &trans &trans &trans &trans &trans
    &trans &trans &trans   &trans    &trans   &trans    &trans &trans &trans &trans &trans &trans
-                        &trans &trans &trans    &trans &trans &mo 5
+                        &trans &trans &toggle_lang    &trans &trans &mo 5
                         >;
                 };
 
