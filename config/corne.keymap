@@ -774,7 +774,7 @@
    &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I     &kp O   &kp P    &to_ru
    &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J &kp K     &kp L   &kp SEMI &mt LALT SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp RSHFT
-               &ht_hm_to 6 3 &td_base 4 0 &mt LGUI RET   &mt LGUI ESC &kp SPACE &ht_hm_sk 7 LC(LS(LA(LGUI)))
+               &ht_hm_to 6 3 &td_base 4 0 &lt 5 RET   &lt 5 ESC &kp SPACE &ht_hm_sk 7 LC(LS(LA(LGUI)))
                         >;
                 };
 
@@ -792,7 +792,7 @@
    &mo 2 &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &mo 4
    &ctrl_en_ru &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &mm_semi &ht_alt_sqt LALT 0
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &mm_comma &mm_dot &mm_fslh &kp RSHFT
-                   &ht_hm_to 6 3 &ht_l4_en 4 0 &ht_gui_en 0 RET   &ht_gui_en 0 ESC &kp SPACE &ht_hm_sk 7 LC(LS(LA(LGUI)))
+                   &ht_hm_to 6 3 &ht_l4_en 4 0 &lt 5 RET   &lt 5 ESC &kp SPACE &ht_hm_sk 7 LC(LS(LA(LGUI)))
                         >;
                 };
 
