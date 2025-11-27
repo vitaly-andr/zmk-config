@@ -79,6 +79,16 @@
             bindings = <&mo>, <&sk>;
           };
 
+          // Hold=GUI, Tap=Toggle language (for workspace layer)
+          ht_gui_toggle: hold_gui_tap_toggle {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_GUI_TAP_TOGGLE";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "balanced";
+            bindings = <&kp>, <&toggle_lang>;
+          };
+
           // Mod-morph for Russian punctuation: normal or shifted
           mm_comma: mod_morph_comma {
             compatible = "zmk,behavior-mod-morph";
@@ -817,7 +827,7 @@
    &caps_word &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6    &kp N7   &kp N8   &kp N9    &kp N0    &kp PSCRN
    &kp LCTRL  &kp C_PREV   &kp C_NEXT   &kp C_VOL_DN &kp C_VOL_UP &kp C_PP       &kp INS   &kp HOME &kp UP   &kp END   &kp PG_UP &mt LALT RET
    &kp LSHFT  &bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3   &kp DEL   &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN &kp RSHFT
-                        &trans &toggle_lang &trans    &trans   &kp BSPC   &trans
+                        &trans &trans &ht_gui_toggle LGUI 0    &trans   &kp BSPC   &trans
                         >;
                 };
         };
