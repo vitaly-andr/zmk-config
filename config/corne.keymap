@@ -79,6 +79,39 @@
             bindings = <&mo>, <&sk>;
           };
 
+          // Mod-morph for Russian punctuation: normal or shifted
+          mm_comma: mod_morph_comma {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MM_COMMA";
+            #binding-cells = <0>;
+            bindings = <&en_comma>, <&en_comma_shifted>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+          };
+
+          mm_dot: mod_morph_dot {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MM_DOT";
+            #binding-cells = <0>;
+            bindings = <&en_dot>, <&en_dot_shifted>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+          };
+
+          mm_fslh: mod_morph_fslh {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MM_FSLH";
+            #binding-cells = <0>;
+            bindings = <&en_fslh>, <&en_fslh_shifted>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+          };
+
+          mm_semi: mod_morph_semi {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MM_SEMI";
+            #binding-cells = <0>;
+            bindings = <&en_semi>, <&en_semi_shifted>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+          };
+
         };
 
         macros {
@@ -264,6 +297,71 @@
               , <&macro_tap &kp LSHFT>
               , <&macro_release &kp LCTRL>
               , <&macro_tap &kp SEMI>
+              , <&macro_press &kp LALT>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LALT>
+              ;
+          };
+
+          // Shifted punctuation macros for Russian layer (< > ? :)
+          en_comma_shifted: english_comma_shifted { // <
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings
+              = <&macro_press &kp LCTRL>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LCTRL>
+              , <&macro_tap &kp LS(COMMA)>
+              , <&macro_press &kp LALT>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LALT>
+              ;
+          };
+
+          en_dot_shifted: english_dot_shifted { // >
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings
+              = <&macro_press &kp LCTRL>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LCTRL>
+              , <&macro_tap &kp LS(DOT)>
+              , <&macro_press &kp LALT>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LALT>
+              ;
+          };
+
+          en_fslh_shifted: english_fslh_shifted { // ?
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings
+              = <&macro_press &kp LCTRL>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LCTRL>
+              , <&macro_tap &kp LS(FSLH)>
+              , <&macro_press &kp LALT>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LALT>
+              ;
+          };
+
+          en_semi_shifted: english_semi_shifted { // :
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <30>;
+            tap-ms = <30>;
+            bindings
+              = <&macro_press &kp LCTRL>
+              , <&macro_tap &kp LSHFT>
+              , <&macro_release &kp LCTRL>
+              , <&macro_tap &kp LS(SEMI)>
               , <&macro_press &kp LALT>
               , <&macro_tap &kp LSHFT>
               , <&macro_release &kp LALT>
@@ -598,8 +696,8 @@
 // CTRL: switches to EN while held. GUI on thumbs: hold=GUI+EN/RU, tap=RET/ESC.
                         bindings = <
    &mo 2 &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &mo 4
-   &ctrl_en_ru &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &en_semi &mt LALT SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &en_comma &en_dot &en_fslh &kp RSHFT
+   &ctrl_en_ru &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &mm_semi &mt LALT SQT
+   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &mm_comma &mm_dot &mm_fslh &kp RSHFT
                    &td_base 5 3 &ht_l4_en 4 0 &ht_gui_en 0 RET   &ht_gui_en 0 ESC &kp SPACE &ht_ws_hyper 5 LC(LS(LA(LGUI)))
                         >;
                 };
