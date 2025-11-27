@@ -10,17 +10,6 @@
 #include <dt-bindings/zmk/pointing.h>
 
 / {
-        combos {
-          compatible = "zmk,combos";
-          // Both outer thumbs = workspace layer
-          combo_workspace {
-            timeout-ms = <50>;
-            key-positions = <36 41>;  // left outer thumb (36) + right outer thumb (41)
-            bindings = <&mo 5>;
-            layers = <0 1 2 3 4>;  // works on all layers except workspace itself
-          };
-        };
-
         behaviors {
           tp: tap_preferred {
             compatible = "zmk,behavior-hold-tap";
@@ -870,12 +859,12 @@
 // |     |     |     |     |     |     |   |     |     |     |     |     |     |
 // |     |     | ALT |SHIFT| GUI |     |   |     |     |     |     |     |     |
 // |     |     |     |     |     |     |   |     |     |     |     |     |     |
-//                   |     |     |     |   |     |     |     |
+//                   |     |     |     |   |     |     | WS  |
                         bindings = <
    &trans &trans &trans   &trans    &trans   &trans    &trans &trans &trans &trans &trans &trans
    &trans &trans &kp LALT &kp LSHFT &kp LGUI &trans    &trans &trans &trans &trans &trans &trans
    &trans &trans &trans   &trans    &trans   &trans    &trans &trans &trans &trans &trans &trans
-                        &trans &trans &trans    &trans &trans &trans
+                        &trans &trans &trans    &trans &trans &mo 5
                         >;
                 };
 
@@ -885,12 +874,12 @@
 // |     |     |     |     |     |     |   |     |     |     |     |     |     |
 // |     |     |     |     |     |     |   |     | GUI |SHIFT| ALT |     |     |
 // |     |     |     |     |     |     |   |     |     |     |     |     |     |
-//                   |     |     |     |   |     |     |     |
+//                   | WS  |     |     |   |     |     |     |
                         bindings = <
    &trans &trans &trans &trans &trans &trans    &trans &trans   &trans    &trans   &trans &trans
    &trans &trans &trans &trans &trans &trans    &trans &kp RGUI &kp RSHFT &kp RALT &trans &trans
    &trans &trans &trans &trans &trans &trans    &trans &trans   &trans    &trans   &trans &trans
-                        &trans &trans &trans    &trans &trans &trans
+                        &mo 5 &trans &trans    &trans &trans &trans
                         >;
                 };
         };
