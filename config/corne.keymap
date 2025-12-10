@@ -160,6 +160,16 @@
             bindings = <&kp>, <&mm_sqt>;
           };
 
+          // Hold=number, Tap=letter (for workspace layer top row)
+          ht_num: hold_number_tap_letter {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_NUM_TAP_LETTER";
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;  // hold=first param (number), tap=second param (letter)
+          };
+
         };
 
         macros {
@@ -841,12 +851,13 @@
 
                 workspace_layer {
 // -----------------------------------------------------------------------------------------
-// |CPWRD|  1   |  2  |  3  |  4  |  5  |   |  6   |  7   |  8   |  9   |  0   |PSCRN|
+// |CPWRD| Q/1  | W/2 | E/3 | R/4 | T/5 |   | Y/6  | U/7  | I/8  | O/9  | P/0  |PSCRN|
 // |CTRL | Prev | Next|Vol- |Vol+ |Play |   | INS  | Home |  UP  | End  | PgUp |RET/A|
 // |SHFT |BTCLR | BT1 | BT2 | BT3 | BT4 |   | DEL  | LEFT | DOWN | RGHT | PgDn |SHFT |
 //                    |     | L0  |     |   |      | BKSP |      |
+// Top row: tap=letter, hold(250ms)=number
                         bindings = <
-   &caps_word &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6    &kp N7   &kp N8   &kp N9    &kp N0    &kp PSCRN
+   &caps_word &ht_num N1 Q &ht_num N2 W &ht_num N3 E &ht_num N4 R &ht_num N5 T   &ht_num N6 Y &ht_num N7 U &ht_num N8 I &ht_num N9 O &ht_num N0 P &kp PSCRN
    &kp LCTRL  &kp C_PREV   &kp C_NEXT   &kp C_VOL_DN &kp C_VOL_UP &kp C_PP       &kp INS   &kp HOME &kp UP   &kp END   &kp PG_UP &mt LALT RET
    &kp LSHFT  &bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3   &kp DEL   &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN &kp RSHFT
                         &trans &to 0 &trans    &trans   &kp BSPC   &trans
