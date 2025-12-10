@@ -907,7 +907,7 @@
                         bindings = <
    &trans &trans &trans &trans &trans &trans    &trans  &trans   &trans   &trans    &trans    &trans
    &trans &trans &trans &trans &trans &trans    &kp INS &kp HOME &kp UP   &kp END   &kp PG_UP &trans
-   &trans &trans &trans &trans &trans &trans    &kp DEL &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN &mo 9
+   &trans &trans &trans &trans &trans &trans    &kp DEL &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN &to 9
                         &trans &trans &trans    &trans  &trans   &trans
                         >;
                 };
