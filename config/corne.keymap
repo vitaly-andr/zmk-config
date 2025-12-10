@@ -767,9 +767,11 @@
 // 2: russian_extra_layer
 // 3: numpad_layer
 // 4: symbols_layer
-// 5: workspace_layer (with BT and media)
+// 5: workspace_layer
 // 6: home_mod_left (hold left outer thumb)
 // 7: home_mod_right (hold right outer thumb)
+// 8: navigation_layer (hold right inner thumb on workspace)
+// 9: service_layer (BT + media) - activation TBD
 
                 default_layer {
 // -----------------------------------------------------------------------------------------
@@ -852,15 +854,16 @@
                 workspace_layer {
 // -----------------------------------------------------------------------------------------
 // |CPWRD| Q/1  | W/2 | E/3 | R/4 | T/5 |   | Y/6  | U/7  | I/8  | O/9  | P/0  |PSCRN|
-// |CTRL | Prev | Next|Vol- |Vol+ |Play |   | INS  | Home |  UP  | End  | PgUp |RET/A|
-// |SHFT |BTCLR | BT1 | BT2 | BT3 | BT4 |   | DEL  | LEFT | DOWN | RGHT | PgDn |SHFT |
-//                    |     | L0  |     |   |      | BKSP |      |
+// |CTRL |  A   |  S  |  D  |  F  |  G  |   |  H   |  J   |  K   |  L   |  ;   | RET |
+// |SHFT |  Z   |  X  |C/ALT|V/SHF|B/GUI|   |  N   |  M   |  ,   |  .   |  /   |SHFT |
+//                    |     | L0  |     |   | NAV  |  SP  |      |
 // Top row: tap=letter, hold(250ms)=number
+// Bottom row left: C/V/B = tap letter, hold modifier
                         bindings = <
    &caps_word &ht_num N1 Q &ht_num N2 W &ht_num N3 E &ht_num N4 R &ht_num N5 T   &ht_num N6 Y &ht_num N7 U &ht_num N8 I &ht_num N9 O &ht_num N0 P &kp PSCRN
-   &kp LCTRL  &kp C_PREV   &kp C_NEXT   &kp C_VOL_DN &kp C_VOL_UP &kp C_PP       &kp INS   &kp HOME &kp UP   &kp END   &kp PG_UP &mt LALT RET
-   &kp LSHFT  &bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3   &kp DEL   &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN &kp RSHFT
-                        &trans &to 0 &trans    &trans   &kp BSPC   &trans
+   &kp LCTRL  &kp A        &kp S        &kp D        &kp F        &kp G          &kp H     &kp J    &kp K    &kp L     &kp SEMI  &kp RET
+   &kp LSHFT  &kp Z        &kp X        &mt LALT C   &mt LSHFT V  &mt LGUI B     &kp N     &kp M    &kp COMMA &kp DOT  &kp FSLH  &kp RSHFT
+                        &trans &to 0 &trans    &mo 8    &kp SPACE  &trans
                         >;
                 };
 
@@ -870,12 +873,12 @@
 // |     |     |     |     |     |     |   |     |     |     |     |     |     |
 // |     |     | ALT |SHIFT| GUI |     |   |     |     |     |     |     |     |
 // |     |     |     |     |     |     |   |     |     |     |     |     |     |
-//                   |     |     |LANG |   |     |     | WS  |
+//                   |     |     |LANG |   |     |     |     |
                         bindings = <
    &trans &trans &trans   &trans    &trans   &trans    &trans &trans &trans &trans &trans &trans
    &trans &trans &kp LALT &kp LSHFT &kp LGUI &trans    &trans &trans &trans &trans &trans &trans
    &trans &trans &trans   &trans    &trans   &trans    &trans &trans &trans &trans &trans &trans
-                        &trans &trans &toggle_lang    &trans &trans &to 5
+                        &trans &trans &toggle_lang    &trans &trans &trans
                         >;
                 };
 
@@ -885,12 +888,42 @@
 // |     |     |     |     |     |     |   |     |     |     |     |     |     |
 // |     |     |     |     |     |     |   |     | GUI |SHIFT| ALT |     |     |
 // |     |     |     |     |     |     |   |     |     |     |     |     |     |
-//                   | WS  |     |     |   |     |     |     |
+//                   |     |     |     |   |     |     |     |
                         bindings = <
    &trans &trans &trans &trans &trans &trans    &trans &trans   &trans    &trans   &trans &trans
    &trans &trans &trans &trans &trans &trans    &trans &kp RGUI &kp RSHFT &kp RALT &trans &trans
    &trans &trans &trans &trans &trans &trans    &trans &trans   &trans    &trans   &trans &trans
-                        &to 5 &trans &trans    &trans &trans &trans
+                        &trans &trans &trans    &trans &trans &trans
+                        >;
+                };
+
+                navigation_layer {
+// -----------------------------------------------------------------------------------------
+// Navigation layer (activated by holding right inner thumb on workspace layer)
+// |     |     |     |     |     |     |   |     |     |     |     |     |     |
+// |     |     |     |     |     |     |   | INS | Home|  UP | End | PgUp|     |
+// |     |     |     |     |     |     |   | DEL | LEFT| DOWN|RIGHT| PgDn| L9  |
+//                   |     |     |     |   |     |     |     |
+                        bindings = <
+   &trans &trans &trans &trans &trans &trans    &trans  &trans   &trans   &trans    &trans    &trans
+   &trans &trans &trans &trans &trans &trans    &kp INS &kp HOME &kp UP   &kp END   &kp PG_UP &trans
+   &trans &trans &trans &trans &trans &trans    &kp DEL &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN &mo 9
+                        &trans &trans &trans    &trans  &trans   &trans
+                        >;
+                };
+
+                service_layer {
+// -----------------------------------------------------------------------------------------
+// Service layer: Bluetooth + Media (hold L9 key on navigation layer)
+// |     |     |     |     |     |     |   |     |     |     |     |     |     |
+// |     | Prev| Next|Vol- |Vol+ | Play|   |     |     |     |     |     |     |
+// |     |BTCLR| BT0 | BT1 | BT2 | BT3 |   |     |     |     |     |     |     |
+//                   |     | L0  |     |   |     |     |     |
+                        bindings = <
+   &trans &trans     &trans       &trans       &trans       &trans         &trans &trans &trans &trans &trans &trans
+   &trans &kp C_PREV &kp C_NEXT   &kp C_VOL_DN &kp C_VOL_UP &kp C_PP       &trans &trans &trans &trans &trans &trans
+   &trans &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3   &trans &trans &trans &trans &trans &trans
+                        &trans &to 0 &trans    &trans &trans &trans
                         >;
                 };
         };
