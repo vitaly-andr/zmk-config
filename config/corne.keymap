@@ -917,13 +917,29 @@
 // Service layer: Bluetooth + Media (hold L9 key on navigation layer)
 // |     |     |     |     |     |     |   |     |     |     |     |     |     |
 // |     | Prev| Next|Vol- |Vol+ | Play|   |     |     |     |     |     |     |
-// |     |BTCLR| BT0 | BT1 | BT2 | BT3 |   |     |     |     |     |     |     |
+// |     |BTCLR| BT0 | BT1 | BT2 | BT3 |   |     |     |     |     |     |COLMK|
 //                   |     | L0  |     |   |     |     |     |
                         bindings = <
-   &trans &trans     &trans       &trans       &trans       &trans         &trans &trans &trans &trans &trans &trans
+   &trans &trans     &trans       &trans       &trans       &trans         &trans &trans &trans &trans &trans &to 10
    &trans &kp C_PREV &kp C_NEXT   &kp C_VOL_DN &kp C_VOL_UP &kp C_PP       &trans &trans &trans &trans &trans &trans
    &trans &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3   &trans &trans &trans &trans &trans &trans
                         &trans &to 0 &trans    &trans &trans &trans
+                        >;
+                };
+
+                colemak_layer {
+// -----------------------------------------------------------------------------------------
+// Colemak-DH layout for experimentation
+// | TAB  |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L  |  U  |  Y  |  ;  | QWRT  |
+// | CTRL |  A  |  R  |  S  |  T  |  G  |   |  M  |  N  |  E  |  I  |  O  | '/ALT |
+// | SHFT |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H  |  ,  |  .  |  /  | SHFT  |
+//                    |NPAD |L4/L0| RET |   | ESC | SPC |HYPER|
+// Top-right: &to 0 to return to QWERTY
+                        bindings = <
+   &kp TAB   &kp Q &kp W &kp F &kp P &kp B   &kp J &kp L &kp U     &kp Y   &kp SEMI &to 0
+   &kp LCTRL &kp A &kp R &kp S &kp T &kp G   &kp M &kp N &kp E     &kp I   &kp O    &mt LALT SQT
+   &kp LSHFT &kp Z &kp X &kp C &kp D &kp V   &kp K &kp H &kp COMMA &kp DOT &kp FSLH &kp RSHFT
+                   &ht_hm_to 6 3 &td_base 4 0 &lt 5 RET   &lt 5 ESC &kp SPACE &ht_hm_sk 7 LC(LS(LA(LGUI)))
                         >;
                 };
         };
