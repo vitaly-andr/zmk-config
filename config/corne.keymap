@@ -762,48 +762,46 @@
                 compatible = "zmk,keymap";
 
 // Layer order (higher number = higher priority):
-// 0: default_layer (English)
-// 1: russian_layer
-// 2: russian_extra_layer
+// 0: default_layer (English Colemak)
+// 1: russian_layer (Russian "Colemak" - optimized)
+// 2: russian_extra_layer (Ъ Ё Й Э Ф Щ + symbols)
 // 3: numpad_layer
 // 4: symbols_layer
-// 5: workspace_layer
+// 5: workspace_layer (Colemak letters)
 // 6: home_mod_left (hold left outer thumb)
 // 7: home_mod_right (hold right outer thumb)
 // 8: navigation_layer (hold right inner thumb on workspace)
-// 9: service_layer (BT + media) - activation TBD
+// 9: service_layer (BT + media)
 
                 default_layer {
 // -----------------------------------------------------------------------------------------
-// | TAB  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  | RU    |
-// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  | '/ALT |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  | SHFT  |
+// Colemak layout (v2)
+// | TAB  |  Q  |  W  |  F  |  P  |  G  |   |  J  |  L  |  U  |  Y  |  ;  | RU    |
+// | CTRL |  A  |  R  |  S  |  T  |  D  |   |  H  |  N  |  E  |  I  |  O  | '/ALT |
+// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  K  |  M  |  ,  |  .  |  /  | SHFT  |
 //                    |NPAD |L4/L0| RET |   | ESC | SPC |HYPER|
-//                    | /WS |     |/SUP |   |/SUP |     | /WS |
-// Top-right: &to_ru macro (switch to L1 + Alt+Shift for OS Russian)
-// Right outer thumb: tap=sticky Hyper, hold=Workspace layer
+//                    |/HML |     |/WS  |   |/WS  |     |/HMR |
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I     &kp O   &kp P    &to_ru
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J &kp K     &kp L   &kp SEMI &mt LALT SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp RSHFT
+   &kp TAB   &kp Q &kp W &kp F &kp P &kp G   &kp J &kp L &kp U     &kp Y   &kp SEMI &to_ru
+   &kp LCTRL &kp A &kp R &kp S &kp T &kp D   &kp H &kp N &kp E     &kp I   &kp O    &mt LALT SQT
+   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp K &kp M &kp COMMA &kp DOT &kp FSLH &kp RSHFT
                &ht_hm_to 6 3 &td_base 4 0 &lt 5 RET   &lt 5 ESC &kp SPACE &ht_hm_sk 7 LC(LS(LA(LGUI)))
                         >;
                 };
 
                 russian_layer {
 // -----------------------------------------------------------------------------------------
-// Russian ЙЦУКЕН - punctuation uses macros to switch OS temporarily
-// CTRL and GUI switch to EN while held, back to RU on release
-// |TAB/L2|  Й  |  Ц  |  У  |  К  |  Е  |   |  Н  |  Г  |  Ш  |  Щ  |  З  |  Х    |
-// |CTRL  |  Ф  |  Ы  |  В  |  А  |  П  |   |  Р  |  О  |  Л  |  Д  |  ;  | '/ALT |
-// |SHFT  |  Я  |  Ч  |  С  |  М  |  И  |   |  Т  |  Ь  |  ,  |  .  |  /  | SHFT  |
-//                    |NPAD |L4/EN|GUI/R|   |GUI/E| SPC |HYPER|
-//                    | /WS |     |     |   |     |     | /WS |
-// CTRL: switches to EN while held. GUI on thumbs: hold=GUI+EN/RU, tap=RET/ESC.
+// Russian "Colemak" - optimized layout (v2)
+// Punctuation uses macros to switch OS temporarily
+// |TAB/L2|  Ц  |  Ь  |  Я  |  П  |  Г  |   |  Ж  |  Д  |  К  |  М  |  ;  |  Х    |
+// |CTRL  |  А  |  Р  |  Е  |  Т  |  В  |   |  Л  |  Н  |  О  |  И  |  С  | '/ALT |
+// |SHFT  |  Ы  |  Ч  |  У  |  З  |  Ю  |   |  Б  |  Ш  |  ,  |  .  |  /  | SHFT  |
+//                    |NPAD |L4/EN| RET |   | ESC | SPC |HYPER|
+//                    |/HML |     |/WS  |   |/WS  |     |/HMR |
                         bindings = <
-   &mo 2 &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp LBKT
-   &ctrl_en_ru &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &mm_semi &ht_alt_sqt LALT 0
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &mm_comma &mm_dot &mm_fslh &kp RSHFT
+   &mo 2 &kp W &kp M &kp Z &kp G &kp U   &kp SEMI &kp L &kp R     &kp V   &mm_semi &kp LBKT
+   &ctrl_en_ru &kp F &kp H &kp T &kp N &kp D   &kp K &kp Y  &kp J     &kp B   &kp C    &ht_alt_sqt LALT 0
+   &kp LSHFT &kp S &kp X &kp E &kp P &kp DOT   &kp COMMA &kp I  &mm_comma &mm_dot &mm_fslh &kp RSHFT
                    &ht_hm_to 6 3 &ht_l4_en 4 0 &lt 5 RET   &lt 5 ESC &kp SPACE &ht_hm_sk 7 LC(LS(LA(LGUI)))
                         >;
                 };
@@ -854,16 +852,17 @@
 
                 workspace_layer {
 // -----------------------------------------------------------------------------------------
-// |CPWRD| Q/1  | W/2 | E/3 | R/4 | T/5 |   | Y/6  | U/7  | I/8  | O/9  | P/0  |PSCRN|
-// |CTRL |  A   |  S  |  D  |  F  |  G  |   |  H   |  J   |  K   |  L   |  ;   | RET |
-// |SHFT |  Z   |  X  |C/ALT|V/SHF|B/GUI|   |  N   |  M   |  ,   |  .   |  /   |SHFT |
+// Colemak letters (v2)
+// |CPWRD| Q/1  | W/2 | F/3 | P/4 | G/5 |   | J/6  | L/7  | U/8  | Y/9  | ;/0  |PSCRN|
+// |CTRL |  A   |  R  |  S  |  T  |  D  |   |  H   |  N   |  E   |  I   |  O   | RET |
+// |SHFT |  Z   |  X  |C/ALT|V/SHF|B/GUI|   |  K   |  M   |  ,   |  .   |  /   |SHFT |
 //                    |     | L0  |     |   | NAV  |  SP  |      |
 // Top row: tap=letter, hold(250ms)=number
 // Bottom row left: C/V/B = tap letter, hold modifier
                         bindings = <
-   &caps_word &ht_num N1 Q &ht_num N2 W &ht_num N3 E &ht_num N4 R &ht_num N5 T   &ht_num N6 Y &ht_num N7 U &ht_num N8 I &ht_num N9 O &ht_num N0 P &kp PSCRN
-   &kp LCTRL  &kp A        &kp S        &kp D        &kp F        &kp G          &kp H     &kp J    &kp K    &kp L     &kp SEMI  &kp RET
-   &kp LSHFT  &kp Z        &kp X        &mt LALT C   &mt LSHFT V  &mt LGUI B     &kp N     &kp M    &kp COMMA &kp DOT  &kp FSLH  &kp RSHFT
+   &caps_word &ht_num N1 Q &ht_num N2 W &ht_num N3 F &ht_num N4 P &ht_num N5 G   &ht_num N6 J &ht_num N7 L &ht_num N8 U &ht_num N9 Y &ht_num N0 SEMI &kp PSCRN
+   &kp LCTRL  &kp A        &kp R        &kp S        &kp T        &kp D          &kp H     &kp N    &kp E    &kp I     &kp O     &kp RET
+   &kp LSHFT  &kp Z        &kp X        &mt LALT C   &mt LSHFT V  &mt LGUI B     &kp K     &kp M    &kp COMMA &kp DOT  &kp FSLH  &kp RSHFT
                         &trans &to 0 &trans    &mo 8    &kp SPACE  &trans
                         >;
                 };
@@ -915,32 +914,16 @@
 
                 service_layer {
 // -----------------------------------------------------------------------------------------
-// Service layer: Bluetooth + Media (hold L9 key on navigation layer)
+// Service layer: Bluetooth + Media (tap L9 on navigation layer)
 // |     |     |     |     |     |     |   |     |     |     |     |     |     |
 // |     | Prev| Next|Vol- |Vol+ | Play|   |     |     |     |     |     |     |
-// |     |BTCLR| BT0 | BT1 | BT2 | BT3 |   |     |     |     |     |     |COLMK|
+// |     |BTCLR| BT0 | BT1 | BT2 | BT3 |   |     |     |     |     |     |     |
 //                   |     | L0  |     |   |     |     |     |
                         bindings = <
-   &trans &trans     &trans       &trans       &trans       &trans         &trans &trans &trans &trans &trans &to 10
+   &trans &trans     &trans       &trans       &trans       &trans         &trans &trans &trans &trans &trans &trans
    &trans &kp C_PREV &kp C_NEXT   &kp C_VOL_DN &kp C_VOL_UP &kp C_PP       &trans &trans &trans &trans &trans &trans
    &trans &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3   &trans &trans &trans &trans &trans &trans
                         &trans &to 0 &trans    &trans &trans &trans
-                        >;
-                };
-
-                colemak_layer {
-// -----------------------------------------------------------------------------------------
-// Colemak layout for experimentation
-// | TAB  |  Q  |  W  |  F  |  P  |  G  |   |  J  |  L  |  U  |  Y  |  ;  | QWRT  |
-// | CTRL |  A  |  R  |  S  |  T  |  D  |   |  H  |  N  |  E  |  I  |  O  | '/ALT |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  K  |  M  |  ,  |  .  |  /  | SHFT  |
-//                    |NPAD |L4/L0| RET |   | ESC | SPC |HYPER|
-// Top-right: &to 0 to return to QWERTY
-                        bindings = <
-   &kp TAB   &kp Q &kp W &kp F &kp P &kp G   &kp J &kp L &kp U     &kp Y   &kp SEMI &to 0
-   &kp LCTRL &kp A &kp R &kp S &kp T &kp D   &kp H &kp N &kp E     &kp I   &kp O    &mt LALT SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp K &kp M &kp COMMA &kp DOT &kp FSLH &kp RSHFT
-                   &ht_hm_to 6 3 &td_base 4 0 &lt 5 RET   &lt 5 ESC &kp SPACE &ht_hm_sk 7 LC(LS(LA(LGUI)))
                         >;
                 };
         };
