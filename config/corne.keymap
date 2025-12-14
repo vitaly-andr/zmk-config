@@ -794,14 +794,14 @@
 // -----------------------------------------------------------------------------------------
 // Russian ЙЦУКЕН - punctuation uses macros to switch OS temporarily
 // CTRL and GUI switch to EN while held, back to RU on release
-// |TAB/L2|  Й  |  Ц  |  У  |  К  |  Е  |   |  Н  |  Г  |  Ш  |  Щ  |  З  | L4    |
+// |TAB/L2|  Й  |  Ц  |  У  |  К  |  Е  |   |  Н  |  Г  |  Ш  |  Щ  |  З  |  Х    |
 // |CTRL  |  Ф  |  Ы  |  В  |  А  |  П  |   |  Р  |  О  |  Л  |  Д  |  ;  | '/ALT |
 // |SHFT  |  Я  |  Ч  |  С  |  М  |  И  |   |  Т  |  Ь  |  ,  |  .  |  /  | SHFT  |
 //                    |NPAD |L4/EN|GUI/R|   |GUI/E| SPC |HYPER|
 //                    | /WS |     |     |   |     |     | /WS |
 // CTRL: switches to EN while held. GUI on thumbs: hold=GUI+EN/RU, tap=RET/ESC.
                         bindings = <
-   &mo 2 &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &mo 4
+   &mo 2 &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp LBKT
    &ctrl_en_ru &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &mm_semi &ht_alt_sqt LALT 0
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &mm_comma &mm_dot &mm_fslh &kp RSHFT
                    &ht_hm_to 6 3 &ht_l4_en 4 0 &lt 5 RET   &lt 5 ESC &kp SPACE &ht_hm_sk 7 LC(LS(LA(LGUI)))
@@ -810,15 +810,16 @@
 
                 russian_extra_layer {
 // -----------------------------------------------------------------------------------------
-// Extra Russian letters + symbols: Ж Э Б Ю Х Ъ Ё № … °
-// |     |  …  |     |  №  |  °  |  Ё  |   |     |     |     |     |  Х  |     |
-// |     |     |     |     |     |     |   |     |     |     |     |  Ж  |  Э  |
-// |     |     |     |     |     |     |   |     |  Ъ  |  Б  |  Ю  |     |     |
+// Extra Russian letters + symbols (right side, hold TAB from L1)
+// Letter pairings: Ъ/Ь, Ё/Е (actually at S), Й/И, plus Э, Ф, Щ
+// |     |     |  Ъ  |     |     |     |   |  №  |  °  |  …  |     |     |     |
+// |     |     |  Ё  |     |     |     |   |     |  Э  |  Ф  |  Й  |     |     |
+// |     |     |     |     |     |     |   |     |     |  Щ  |     |     |     |
 //                   |     |     |     |   |     |     |     |
                         bindings = <
-   &trans &uc_ellipsis &trans &uc_numero &uc_degree &kp GRAVE    &trans &trans &trans &trans &kp LBKT &trans
-   &trans &trans &trans &trans &trans &trans       &trans &trans &trans &trans &kp SEMI &kp SQT
-   &trans &trans &trans &trans &trans &trans       &trans &kp RBKT &kp COMMA &kp DOT &trans &trans
+   &trans &trans &kp RBKT &trans &trans &trans       &uc_numero &uc_degree &uc_ellipsis &trans &trans &trans
+   &trans &trans &kp GRAVE &trans &trans &trans      &trans &kp SQT &kp A &kp Q &trans &trans
+   &trans &trans &trans &trans &trans &trans         &trans &trans &kp O &trans &trans &trans
                         &trans &trans &trans    &trans &trans &trans
                         >;
                 };
@@ -929,16 +930,16 @@
 
                 colemak_layer {
 // -----------------------------------------------------------------------------------------
-// Colemak-DH layout for experimentation
-// | TAB  |  Q  |  W  |  F  |  P  |  B  |   |  J  |  L  |  U  |  Y  |  ;  | QWRT  |
-// | CTRL |  A  |  R  |  S  |  T  |  G  |   |  M  |  N  |  E  |  I  |  O  | '/ALT |
-// | SHFT |  Z  |  X  |  C  |  D  |  V  |   |  K  |  H  |  ,  |  .  |  /  | SHFT  |
+// Colemak layout for experimentation
+// | TAB  |  Q  |  W  |  F  |  P  |  G  |   |  J  |  L  |  U  |  Y  |  ;  | QWRT  |
+// | CTRL |  A  |  R  |  S  |  T  |  D  |   |  H  |  N  |  E  |  I  |  O  | '/ALT |
+// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  K  |  M  |  ,  |  .  |  /  | SHFT  |
 //                    |NPAD |L4/L0| RET |   | ESC | SPC |HYPER|
 // Top-right: &to 0 to return to QWERTY
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp F &kp P &kp B   &kp J &kp L &kp U     &kp Y   &kp SEMI &to 0
-   &kp LCTRL &kp A &kp R &kp S &kp T &kp G   &kp M &kp N &kp E     &kp I   &kp O    &mt LALT SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp D &kp V   &kp K &kp H &kp COMMA &kp DOT &kp FSLH &kp RSHFT
+   &kp TAB   &kp Q &kp W &kp F &kp P &kp G   &kp J &kp L &kp U     &kp Y   &kp SEMI &to 0
+   &kp LCTRL &kp A &kp R &kp S &kp T &kp D   &kp H &kp N &kp E     &kp I   &kp O    &mt LALT SQT
+   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp K &kp M &kp COMMA &kp DOT &kp FSLH &kp RSHFT
                    &ht_hm_to 6 3 &td_base 4 0 &lt 5 RET   &lt 5 ESC &kp SPACE &ht_hm_sk 7 LC(LS(LA(LGUI)))
                         >;
                 };
