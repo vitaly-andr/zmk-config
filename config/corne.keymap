@@ -808,16 +808,16 @@
 
                 russian_extra_layer {
 // -----------------------------------------------------------------------------------------
-// Extra Russian letters + symbols (right side, hold TAB from L1)
-// Letter pairings: Ъ/Ь, Ё/Е (actually at S), Й/И, plus Э, Ф, Щ
+// Extra Russian letters + symbols (hold TAB from L1)
+// Letter pairings: Ъ/Ь (W), Ё/Е (S), Й/И (I), Щ/Ш (M), plus Э, Ф
 // |     |     |  Ъ  |     |     |     |   |  №  |  °  |  …  |     |     |     |
-// |     |     |  Ё  |     |     |     |   |     |  Э  |  Ф  |  Й  |     |     |
-// |     |     |     |     |     |     |   |     |     |  Щ  |     |     |     |
+// |     |     |     |  Ё  |     |     |   |     |  Э  |  Ф  |  Й  |     |     |
+// |     |     |     |     |     |     |   |     |  Щ  |     |     |     |     |
 //                   |     |     |     |   |     |     |     |
                         bindings = <
    &trans &trans &kp RBKT &trans &trans &trans       &uc_numero &uc_degree &uc_ellipsis &trans &trans &trans
-   &trans &trans &kp GRAVE &trans &trans &trans      &trans &kp SQT &kp A &kp Q &trans &trans
-   &trans &trans &trans &trans &trans &trans         &trans &trans &kp O &trans &trans &trans
+   &trans &trans &trans &kp GRAVE &trans &trans      &trans &kp SQT &kp A &kp Q &trans &trans
+   &trans &trans &trans &trans &trans &trans         &trans &kp O &trans &trans &trans &trans
                         &trans &trans &trans    &trans &trans &trans
                         >;
                 };
@@ -888,12 +888,12 @@
 // |     |     |     |     |     |     |   |     |     |     |     |     |     |
 // |     |     |     |     |     |     |   |     | GUI |SHIFT| ALT |     |     |
 // |     |     |     |     |     |     |   |     |     |     |     |     |     |
-//                   |     |     |     |   |     |     |     |
+//                   |     |     |LANG |   |     |     |     |
                         bindings = <
    &trans &trans &trans &trans &trans &trans    &trans &trans   &trans    &trans   &trans &trans
    &trans &trans &trans &trans &trans &trans    &trans &kp RGUI &kp RSHFT &kp RALT &trans &trans
    &trans &trans &trans &trans &trans &trans    &trans &trans   &trans    &trans   &trans &trans
-                        &trans &trans &trans    &trans &trans &trans
+                        &trans &trans &toggle_lang    &trans &trans &trans
                         >;
                 };
 
