@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corne Keyboard Layout</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', 'SF Pro', -apple-system, sans-serif; background: #0f0f0f; color: #e0e0e0; padding: 20px; }
+  h1 { text-align: center; font-size: 1.4em; margin-bottom: 4px; color: #fff; }
+  .sub { text-align: center; font-size: 0.85em; color: #888; margin-bottom: 20px; }
+  details { margin-bottom: 12px; }
+  summary {
+    cursor: pointer; padding: 8px 16px; border-radius: 6px; font-weight: 600; font-size: 0.95em;
+    background: #1a1a1a; border: 1px solid #333; list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before { content: "\25b6 "; font-size: 0.7em; }
+  details[open] > summary::before { content: "\25bc "; }
+  details[open] > summary { background: #1a2a3a; border-color: #3a5a7a; }
+  .ldesc { text-align: center; font-size: 0.8em; color: #888; margin: 8px 0 12px; }
+  .kb { display: flex; justify-content: center; gap: 36px; padding: 12px 0; flex-wrap: wrap; }
+  .half { display: flex; flex-direction: column; gap: 4px; }
+  .r { display: flex; gap: 4px; }
+  .tr { display: flex; gap: 4px; margin-top: 8px; }
+  .half.right .tr { justify-content: flex-start; }
+  .half.left .tr { justify-content: flex-end; }
+  .k {
+    min-width: 60px; height: 50px; border-radius: 6px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; font-size: 0.75em; font-weight: 500;
+    background: #1e1e1e; border: 1px solid #3a3a3a; padding: 2px 4px; text-align: center;
+  }
+  .k:hover { border-color: #5a8abf; background: #252525; }
+  .k b { font-size: 1.1em; }
+  .k small { font-size: 0.7em; color: #6a9fd8; }
+  .k.m { background: #1a2a1a; border-color: #2a5a2a; }
+  .k.ly { background: #2a1a2a; border-color: #5a2a5a; }
+  .k.s { background: #2a2a1a; border-color: #5a5a2a; }
+  .k.u { background: #1a1a2a; border-color: #2a2a5a; }
+  .k.t { background: #141414; border-color: #252525; color: #555; }
+  .k.n { background: #1a2a2a; border-color: #2a5a5a; }
+  .k.md { background: #2a1a1a; border-color: #5a2a2a; }
+  .k.th { min-width: 68px; height: 44px; border-radius: 8px; background: #1a1a2e; border-color: #3a3a5e; }
+  .legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin: 16px 0; padding: 10px; background: #141414; border-radius: 8px; font-size: 0.75em; color: #aaa; }
+  .legend span { display: flex; align-items: center; gap: 5px; }
+  .legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; border: 1px solid; }
+</style>
+</head>
+<body>
+<h1>Corne 3x6+3 Layout</h1>
+<p class="sub">nice!nano v2 &middot; USB-only &middot; 7 layers</p>
+
+<div class="legend">
+  <span><i style="background:#1e1e1e;border-color:#3a3a3a"></i>Alpha</span>
+  <span><i style="background:#1a2a1a;border-color:#2a5a2a"></i>Modifier</span>
+  <span><i style="background:#2a1a2a;border-color:#5a2a5a"></i>Layer</span>
+  <span><i style="background:#2a2a1a;border-color:#5a5a2a"></i>Special</span>
+  <span><i style="background:#1a1a2a;border-color:#2a2a5a"></i>Unicode</span>
+  <span><i style="background:#1a2a2a;border-color:#2a5a5a"></i>Navigation</span>
+  <span><i style="background:#141414;border-color:#252525"></i>Transparent</span>
+</div>
+
+<!-- L0: QWERTY -->
+<details open>
+<summary>L0: QWERTY &mdash; Base English</summary>
+<div class="kb">
+  <div class="half left">
+    <div class="r">
+      <div class="k s"><b>TAB</b></div><div class="k"><b>Q</b></div><div class="k"><b>W</b></div><div class="k"><b>E</b></div><div class="k"><b>R</b></div><div class="k"><b>T</b></div>
+    </div>
+    <div class="r">
+      <div class="k m"><b>CTRL</b></div><div class="k"><b>A</b></div><div class="k"><b>S</b></div><div class="k"><b>D</b></div><div class="k"><b>F</b></div><div class="k"><b>G</b></div>
+    </div>
+    <div class="r">
+      <div class="k m"><b>SHFT</b></div><div class="k"><b>Z</b></div><div class="k"><b>X</b></div><div class="k"><b>C</b></div><div class="k"><b>V</b></div><div class="k"><b>B</b></div>
+    </div>
+    <div class="tr">
+      <div class="k th ly"><b>NPAD</b><small>hold:HML</small></div><div class="k th ly"><b>SYM/L0</b></div><div class="k th ly"><b>RET</b><small>hold:WS</small></div>
+    </div>
+  </div>
+  <div class="half right">
+    <div class="r">
+      <div class="k"><b>Y</b></div><div class="k"><b>U</b></div><div class="k"><b>I</b></div><div class="k"><b>O</b></div><div class="k"><b>P</b></div><div class="k s"><b>BSPC</b></div>
+    </div>
+    <div class="r">
+      <div class="k"><b>H</b></div><div class="k"><b>J</b></div><div class="k"><b>K</b></div><div class="k"><b>L</b></div><div class="k s"><b>;</b></div><div class="k m"><b>'</b><small>hold:ALT</small></div>
+    </div>
+    <div class="r">
+      <div class="k"><b>N</b></div><div class="k"><b>M</b></div><div class="k"><b>,</b></div><div class="k"><b>.</b></div><div class="k"><b>/</b></div><div class="k m"><b>SHFT</b></div>
+    </div>
+    <div class="tr">
+      <div class="k th ly"><b>ESC</b><small>hold:WS</small></div><div class="k th"><b>SPC</b></div><div class="k th ly"><b>HYPR</b><small>hold:HMR</small></div>
+    </div>
+  </div>
+</div>
+</details>
+
+<!-- L1: Numpad -->
+<details>
+<summary>L1: Numpad &mdash; Right numpad + left math (Unicode)</summary>
+<div class="kb">
+  <div class="half left">
+    <div class="r">
+      <div class="k s"><b>LCLK</b></div><div class="k u"><b>&plusmn;</b></div><div class="k u"><b>&asymp;</b></div><div class="k u"><b>&radic;</b></div><div class="k u"><b>&ne;</b></div><div class="k u"><b>&infin;</b></div>
+    </div>
+    <div class="r">
+      <div class="k s"><b>RCLK</b></div><div class="k u"><b>&le;</b></div><div class="k u"><b>&sum;</b></div><div class="k u"><b>&empty;</b></div><div class="k u"><b>&isin;</b></div><div class="k u"><b>&ge;</b></div>
+    </div>
+    <div class="r">
+      <div class="k m"><b>GUI</b></div><div class="k u"><b>&times;</b></div><div class="k u"><b>&divide;</b></div><div class="k u"><b>&#x2081;</b></div><div class="k u"><b>&sup2;</b></div><div class="k u"><b>&sup3;</b></div>
+    </div>
+    <div class="tr">
+      <div class="k th t"><b>&#x25bd;</b></div><div class="k th t"><b>&#x25bd;</b></div><div class="k th t"><b>&#x25bd;</b></div>
+    </div>
+  </div>
+  <div class="half right">
+    <div class="r">
+      <div class="k"><b>/</b></div><div class="k"><b>7</b></div><div class="k"><b>8</b></div><div class="k"><b>9</b></div><div class="k"><b>-</b></div><div class="k"><b>=</b></div>
+    </div>
+    <div class="r">
+      <div class="k"><b>*</b></div><div class="k"><b>4</b></div><div class="k"><b>5</b></div><div class="k"><b>6</b></div><div class="k"><b>+</b></div><div class="k s"><b>RET</b></div>
+    </div>
+    <div class="r">
+      <div class="k"><b>0</b></div><div class="k"><b>1</b></div><div class="k"><b>2</b></div><div class="k"><b>3</b></div><div class="k"><b>.</b></div><div class="k"><b>%</b></div>
+    </div>
+    <div class="tr">
+      <div class="k th t"><b>&#x25bd;</b></div><div class="k th t"><b>&#x25bd;</b></div><div class="k th t"><b>&#x25bd;</b></div>
+    </div>
+  </div>
+</div>
+</details>
+
+<!-- L2: Symbols -->
+<details>
+<summary>L2: Symbols &mdash; Programming symbols + currency</summary>
+<div class="kb">
+  <div class="half left">
+    <div class="r">
+      <div class="k u"><b>&#x2713;</b></div><div class="k s"><b>!</b></div><div class="k s"><b>@</b></div><div class="k s"><b>#</b></div><div class="k s"><b>$</b></div><div class="k s"><b>%</b></div>
+    </div>
+    <div class="r">
+      <div class="k u"><b>&#x2717;</b></div><div class="k u"><b>&euro;</b></div><div class="k u"><b>&pound;</b></div><div class="k u"><b>&#x20bd;</b></div><div class="k u"><b>&#x20b9;</b></div><div class="k u"><b>&yen;</b></div>
+    </div>
+    <div class="r">
+      <div class="k u"><b>&#x2605;</b></div><div class="k u"><b>m&sup2;</b></div><div class="k u"><b>m&sup3;</b></div><div class="k u"><b>&laquo;</b></div><div class="k u"><b>&raquo;</b></div><div class="k u"><b>&mdash;</b></div>
+    </div>
+    <div class="tr">
+      <div class="k th t"><b>&#x25bd;</b></div><div class="k th t"><b>&#x25bd;</b></div><div class="k th t"><b>&#x25bd;</b></div>
+    </div>
+  </div>
+  <div class="half right">
+    <div class="r">
+      <div class="k"><b>^</b></div><div class="k"><b>&amp;</b></div><div class="k"><b>*</b></div><div class="k"><b>(</b></div><div class="k"><b>)</b></div><div class="k"><b>\</b></div>
+    </div>
+    <div class="r">
+      <div class="k"><b>-</b></div><div class="k"><b>=</b></div><div class="k"><b>`</b></div><div class="k"><b>[</b></div><div class="k"><b>]</b></div><div class="k"><b>|</b></div>
+    </div>
+    <div class="r">
+      <div class="k"><b>_</b></div><div class="k"><b>+</b></div><div class="k"><b>~</b></div><div class="k"><b>{</b></div><div class="k"><b>}</b></div><div class="k u"><b>&#x2666;</b></div>
+    </div>
+    <div class="tr">
+      <div class="k th t"><b>&#x25bd;</b></div><div class="k th s"><b>BSPC</b></div><div class="k th t"><b>&#x25bd;</b></div>
+    </div>
+  </div>
+</div>
+</details>
+
+<!-- L3: Workspace -->
+<details>
+<summary>L3: Workspace &mdash; QWERTY + hold-for-number, caps word</summary>
+<div class="kb">
+  <div class="half left">
+    <div class="r">
+      <div class="k s"><b>CPWD</b></div><div class="k"><b>Q</b><small>hold:1</small></div><div class="k"><b>W</b><small>hold:2</small></div><div class="k"><b>E</b><small>hold:3</small></div><div class="k"><b>R</b><small>hold:4</small></div><div class="k"><b>T</b><small>hold:5</small></div>
+    </div>
+    <div class="r">
+      <div class="k m"><b>CTRL</b></div><div class="k"><b>A</b></div><div class="k"><b>S</b></div><div class="k"><b>D</b></div><div class="k"><b>F</b></div><div class="k"><b>G</b></div>
+    </div>
+    <div class="r">
+      <div class="k m"><b>SHFT</b></div><div class="k"><b>Z</b></div><div class="k"><b>X</b></div><div class="k m"><b>C</b><small>hold:ALT</small></div><div class="k m"><b>V</b><small>hold:SHF</small></div><div class="k m"><b>B</b><small>hold:GUI</small></div>
+    </div>
+    <div class="tr">
+      <div class="k th t"><b>&#x25bd;</b></div><div class="k th ly"><b>L0</b></div><div class="k th t"><b>&#x25bd;</b></div>
+    </div>
+  </div>
+  <div class="half right">
+    <div class="r">
+      <div class="k"><b>Y</b><small>hold:6</small></div><div class="k"><b>U</b><small>hold:7</small></div><div class="k"><b>I</b><small>hold:8</small></div><div class="k"><b>O</b><small>hold:9</small></div><div class="k"><b>P</b><small>hold:0</small></div><div class="k s"><b>PSCR</b></div>
+    </div>
+    <div class="r">
+      <div class="k"><b>H</b></div><div class="k"><b>J</b></div><div class="k"><b>K</b></div><div class="k"><b>L</b></div><div class="k"><b>;</b></div><div class="k s"><b>RET</b></div>
+    </div>
+    <div class="r">
+      <div class="k"><b>N</b></div><div class="k"><b>M</b></div><div class="k"><b>,</b></div><div class="k"><b>.</b></div><div class="k"><b>/</b></div><div class="k m"><b>SHFT</b></div>
+    </div>
+    <div class="tr">
+      <div class="k th ly"><b>NAV</b></div><div class="k th"><b>SPC</b></div><div class="k th t"><b>&#x25bd;</b></div>
+    </div>
+  </div>
+</div>
+</details>
+
+<!-- L4: Home Mod Left -->
+<details>
+<summary>L4: Home Mod Left &mdash; Left-hand mods (hold left outer thumb)</summary>
+<div class="kb">
+  <div class="half left">
+    <div class="r"><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div></div>
+    <div class="r"><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k m"><b>ALT</b></div><div class="k m"><b>SHFT</b></div><div class="k m"><b>GUI</b></div><div class="k t"><b>&#x25bd;</b></div></div>
+    <div class="r"><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div></div>
+    <div class="tr"><div class="k th t"><b>&#x25bd;</b></div><div class="k th t"><b>&#x25bd;</b></div><div class="k th t"><b>&#x25bd;</b></div></div>
+  </div>
+  <div class="half right">
+    <div class="r"><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div></div>
+    <div class="r"><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div></div>
+    <div class="r"><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div></div>
+    <div class="tr"><div class="k th t"><b>&#x25bd;</b></div><div class="k th t"><b>&#x25bd;</b></div><div class="k th t"><b>&#x25bd;</b></div></div>
+  </div>
+</div>
+</details>
+
+<!-- L5: Home Mod Right -->
+<details>
+<summary>L5: Home Mod Right &mdash; Right-hand mods (hold right outer thumb)</summary>
+<div class="kb">
+  <div class="half left">
+    <div class="r"><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div></div>
+    <div class="r"><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div></div>
+    <div class="r"><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div></div>
+    <div class="tr"><div class="k th t"><b>&#x25bd;</b></div><div class="k th t"><b>&#x25bd;</b></div><div class="k th t"><b>&#x25bd;</b></div></div>
+  </div>
+  <div class="half right">
+    <div class="r"><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div></div>
+    <div class="r"><div class="k t"><b>&#x25bd;</b></div><div class="k m"><b>GUI</b></div><div class="k m"><b>SHFT</b></div><div class="k m"><b>ALT</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div></div>
+    <div class="r"><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div></div>
+    <div class="tr"><div class="k th t"><b>&#x25bd;</b></div><div class="k th t"><b>&#x25bd;</b></div><div class="k th t"><b>&#x25bd;</b></div></div>
+  </div>
+</div>
+</details>
+
+<!-- L6: Navigation -->
+<details>
+<summary>L6: Navigation &mdash; Arrows, Home/End, PgUp/PgDn</summary>
+<div class="kb">
+  <div class="half left">
+    <div class="r"><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div></div>
+    <div class="r"><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div></div>
+    <div class="r"><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div></div>
+    <div class="tr"><div class="k th t"><b>&#x25bd;</b></div><div class="k th t"><b>&#x25bd;</b></div><div class="k th t"><b>&#x25bd;</b></div></div>
+  </div>
+  <div class="half right">
+    <div class="r"><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div><div class="k t"><b>&#x25bd;</b></div></div>
+    <div class="r"><div class="k n"><b>INS</b></div><div class="k n"><b>Home</b></div><div class="k n"><b>&uarr;</b></div><div class="k n"><b>End</b></div><div class="k n"><b>PgUp</b></div><div class="k t"><b>&#x25bd;</b></div></div>
+    <div class="r"><div class="k n"><b>DEL</b></div><div class="k n"><b>&larr;</b></div><div class="k n"><b>&darr;</b></div><div class="k n"><b>&rarr;</b></div><div class="k n"><b>PgDn</b></div><div class="k t"><b>&#x25bd;</b></div></div>
+    <div class="tr"><div class="k th t"><b>&#x25bd;</b></div><div class="k th t"><b>&#x25bd;</b></div><div class="k th t"><b>&#x25bd;</b></div></div>
+  </div>
+</div>
+</details>
+
+
+</body>
+</html>
