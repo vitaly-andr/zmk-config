@@ -450,18 +450,16 @@
 
                 workspace_layer {
 // -----------------------------------------------------------------------------------------
-// QWERTY letters
-// |CPWRD| Q/1  | W/2 | E/3 | R/4 | T/5 |   | Y/6  | U/7  | I/8  | O/9  | P/0  |PSCRN|
-// |CTRL |  A   |  S  |  D  |  F  |  G  |   |  H   |  J   |  K   |  L   | ;    | RET |
-// |SHFT |  Z   |  X  |C/ALT|V/SHF|B/GUI|   |  N   |  M   |  ,   |  .   |  /   |SHFT |
-//                    |     | L0  |     |   | NAV  |  SP  |      |
-// Top row: tap=letter, hold(250ms)=number
-// Bottom row left: C/V/B = tap letter, hold modifier
+// GUI + QWERTY (all keys send GUI+key)
+// |CPWD |GUI+Q|GUI+W|GUI+E|GUI+R|GUI+T|   |GUI+Y|GUI+U|GUI+I|GUI+O|GUI+P|PSCR |
+// |     |GUI+A|GUI+S|GUI+D|GUI+F|GUI+G|   |GUI+H|GUI+J|GUI+K|GUI+L|GUI+;| RET |
+// |     |GUI+Z|GUI+X|GUI+C|GUI+V|GUI+B|   |GUI+N|GUI+M|GUI+,|GUI+.|GUI+/|     |
+//                   |     |     |     |   |     |     |     |
                         bindings = <
-   &caps_word &ht_num N1 Q &ht_num N2 W &ht_num N3 E &ht_num N4 R &ht_num N5 T   &ht_num N6 Y &ht_num N7 U &ht_num N8 I &ht_num N9 O &ht_num N0 P &kp PSCRN
-   &kp LCTRL  &kp A        &kp S        &kp D        &kp F        &kp G          &kp H     &kp J    &kp K    &kp L     &kp SEMI  &kp RET
-   &kp LSHFT  &kp Z        &kp X        &mt LALT C   &mt LSHFT V  &mt LGUI B     &kp N     &kp M    &kp COMMA &kp DOT  &kp FSLH  &kp RSHFT
-                        &trans &to 0 &trans    &mo 6    &kp SPACE  &trans
+   &caps_word   &kp LG(Q) &kp LG(W) &kp LG(E) &kp LG(R) &kp LG(T)   &kp LG(Y) &kp LG(U) &kp LG(I)     &kp LG(O)   &kp LG(P)    &kp PSCRN
+   &trans       &kp LG(A) &kp LG(S) &kp LG(D) &kp LG(F) &kp LG(G)   &kp LG(H) &kp LG(J) &kp LG(K)     &kp LG(L)   &kp LG(SEMI) &kp RET
+   &trans       &kp LG(Z) &kp LG(X) &kp LG(C) &kp LG(V) &kp LG(B)   &kp LG(N) &kp LG(M) &kp LG(COMMA) &kp LG(DOT) &kp LG(FSLH) &trans
+                        &trans &trans &trans    &trans   &trans &trans
                         >;
                 };
 
@@ -506,7 +504,7 @@
    &trans &trans &trans &trans &trans &trans    &trans  &trans   &trans   &trans    &trans    &trans
    &trans &trans &trans &trans &trans &trans    &kp INS &kp HOME &kp UP   &kp END   &kp PG_UP &trans
    &trans &trans &trans &trans &trans &trans    &kp DEL &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN &none
-                        &trans &trans &trans    &trans  &trans   &trans
+                        &trans &trans &trans    &trans  &kp SPACE &trans
                         >;
                 };
 
