@@ -78,6 +78,16 @@
             bindings = <&mo>, <&sk>;
           };
 
+          // Hold=Workspace layer, Tap=Toggle NAV
+          ht_ws_nav: hold_ws_tap_nav {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_WS_TAP_NAV";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "balanced";
+            bindings = <&mo>, <&tog>;
+          };
+
           // Hold=number, Tap=letter (for workspace layer top row)
           ht_num: hold_number_tap_letter {
             compatible = "zmk,behavior-hold-tap";
@@ -413,10 +423,10 @@
 //                    |NPAD |L2/L0| RET |   | ESC | SPC |HYPER|
 //                    |/HML |     |/WS  |   |/WS  |     |/HMR |
                         bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I     &kp O   &kp P    &kp BSPC
+   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U &kp I     &kp O   &kp P    &kp ESC
    &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J &kp K     &kp L   &kp SEMI &mt LALT SQT
    &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M &kp COMMA &kp DOT &kp FSLH &kp RSHFT
-               &ht_hm_to 4 1 &td_base 2 0 &lt 3 RET   &lt 3 ESC &kp SPACE &ht_hm_sk 5 LC(LS(LA(LGUI)))
+               &ht_hm_to 4 1 &td_base 2 0 &lt 3 RET   &ht_ws_nav 3 6 &kp SPACE &ht_hm_sk 5 LC(LS(LA(LGUI)))
                         >;
                 };
 
@@ -495,16 +505,16 @@
 
                 navigation_layer {
 // -----------------------------------------------------------------------------------------
-// Navigation layer (activated by holding right inner thumb on workspace layer)
-// |     |     |     |     |     |     |   |     |     |     |     |     |     |
-// |     |     |     |     |     |     |   | INS | Home|  UP | End | PgUp|     |
-// |     |     |     |     |     |     |   | DEL | LEFT| DOWN|RIGHT| PgDn| L7  |
-//                   |     |     |     |   |     |     |     |
+// Navigation layer (toggle right inner thumb)
+// |CPWD |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  |PSCR |
+// |     |     |     |     |     |     |   | INS |Home |  UP | End |PgUp | RET |
+// |     |     |     |     |     |     |   | DEL |LEFT |DOWN |RGHT |PgDn |BSPC |
+//                   |SHFT |L0/GU| ALT |   |     | SPC |     |
                         bindings = <
-   &trans &trans &trans &trans &trans &trans    &trans  &trans   &trans   &trans    &trans    &trans
-   &trans &trans &trans &trans &trans &trans    &kp INS &kp HOME &kp UP   &kp END   &kp PG_UP &trans
-   &trans &trans &trans &trans &trans &trans    &kp DEL &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN &none
-                        &trans &trans &trans    &trans  &kp SPACE &trans
+   &caps_word &kp N1 &kp N2 &kp N3 &kp N4 &kp N5    &kp N6  &kp N7   &kp N8   &kp N9    &kp N0    &kp PSCRN
+   &trans &trans &trans &trans &trans &trans    &kp INS &kp HOME &kp UP   &kp END   &kp PG_UP &kp RET
+   &trans &trans &trans &trans &trans &trans    &kp DEL &kp LEFT &kp DOWN &kp RIGHT &kp PG_DN &kp BSPC
+                        &kp LSHFT &lt_rev LGUI 0 &kp LALT    &trans  &kp SPACE &trans
                         >;
                 };
 
