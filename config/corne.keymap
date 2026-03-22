@@ -469,7 +469,7 @@
    &caps_word   &kp LG(Q) &kp LG(W) &kp LG(E) &kp LG(R) &kp LG(T)   &kp LG(Y) &kp LG(U) &kp LG(I)     &kp LG(O)   &kp LG(P)    &kp PSCRN
    &trans       &kp LG(A) &kp LG(S) &kp LG(D) &kp LG(F) &kp LG(G)   &kp LG(H) &kp LG(J) &kp LG(K)     &kp LG(L)   &kp LG(SEMI) &kp LG(RET)
    &trans       &kp LG(Z) &kp LG(X) &kp LG(C) &kp LG(V) &kp LG(B)   &kp LG(N) &kp LG(M) &kp LG(COMMA) &kp LG(DOT) &kp LG(FSLH) &trans
-                        &trans &trans &trans    &trans   &trans &trans
+                        &trans &trans &trans    &trans   &kp LG(SPACE) &trans
                         >;
                 };
 
